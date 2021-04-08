@@ -17,6 +17,7 @@ namespace ParcelDelivery.Data
             servicecollection.AddScoped<IParcelCategoryService, ParcelCategoryServiceImp>();
             servicecollection.AddScoped<IRouteService, RouteServiceImp>();
             servicecollection.AddScoped<ISegmentService, SegmentServieImp>();
+            servicecollection.AddScoped<IParcelService, ParcelServiceImp>();
 
             return servicecollection;
         }
