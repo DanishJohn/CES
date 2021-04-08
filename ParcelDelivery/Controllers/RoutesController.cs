@@ -27,25 +27,7 @@ namespace ParcelDelivery.Controllers
             _cityService = cityService;
         }
 
-        // GET: api/Route
-        [HttpGet]
-        public string result()
-        {
-            var listSegment = _segmentService.FindAllSegments();
-            HashSet<City> citySet = new HashSet<City>();
-            foreach (Segment segment in listSegment)
-            {
-                citySet.Add(segment.From);
-            }
-            Graph graph = new Graph(citySet);
-            City city1 = _cityService.GetCity(7);
-            City city2 = _cityService.GetCity(5);
-            foreach (Segment segment in listSegment)
-            {
-                graph.addEdge(segment.From, segment.To);
-            }
-            return _routeService.PrintAllPaths(graph, city1, city2);
-        }
+        // GET: api/Routes/Calculate?fromId=xxx&toId=yyy
         [Route("Calculate")]
         [HttpGet]
         public List<SegmentResult> GetResult(int fromId, int toId)
