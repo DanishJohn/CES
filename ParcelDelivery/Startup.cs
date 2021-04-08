@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.Models;
 using ParcelDelivery.Data.Models.Auth;
+using ParcelDelivery.Services;
+using ParcelDelivery.Services.Impl;
 
 namespace ParcelDelivery
 {
@@ -38,6 +40,7 @@ namespace ParcelDelivery
                 .AddDefaultTokenProviders();
             services.AddControllers();
             services.AddRazorPages();
+            services.AddScoped<ICityService, CityServiceImp>();
 
             ServiceConfigure.RegisterService(services);
 

@@ -1,5 +1,5 @@
 ﻿@page
-
+@model ParcelDelivery.Pages.Search.SearchPageModel
 <!doctype html>
 <html lang="en">
 
@@ -98,33 +98,27 @@
                                             <div id='parcelInformation'>
                                                 <form style="color: white;">
                                                     <div class="row" style="text-align: left;">
+
                                                         <div class="col">
                                                             <label for="inputDeparture">
                                                                 From <span style="color: red;">*</span>
                                                             </label>
-                                                            <select id="inputDeparture" class="form-control"
+                                                            <select class="form-control" asp-for="departureCityId" asp-items="@Model.cityList"></select>
+                                                            <!--<select id="inputDeparture" class="form-control"
                                                                     style="background-color: transparent; color: white;">
                                                                 <option selected disabled selected hidden>
                                                                     Please select
                                                                     a departure
-                                                                </option>
-                                                                <!-- Please use the C# to populate the list -->
-                                                                <option>...</option>
-                                                            </select>
+                                                                </option>-->
+                                                            <!-- Please use the C# to populate the list -->
+                                                            <!--<option>...</option>
+                                                            </select>-->
                                                         </div>
                                                         <div class="col">
                                                             <label for="inputDeparture">
                                                                 To <span style="color: red;">*</span>
                                                             </label>
-                                                            <select id="inputDeparture" class="form-control"
-                                                                    style="background-color: transparent; color: white;">
-                                                                <option selected disabled selected hidden>
-                                                                    Please select
-                                                                    a destination
-                                                                </option>
-                                                                <!-- Please use the C# to populate the list -->
-                                                                <option>...</option>
-                                                            </select>
+                                                            <select class="form-control" asp-for="destinationCityId" asp-items="@Model.cityList"></select>
                                                         </div>
                                                     </div>
                                                     <br />
@@ -278,7 +272,7 @@
                                                             <br />
                                                             <img width="50px" height="50px"
                                                                  src="~/asset/logo.png" /> <img width="50px"
-                                                                                                     height="50px" src="~/asset/logo.png" />
+                                                                                                height="50px" src="~/asset/logo.png" />
                                                         </td>
                                                         <td>Jackson</td>
                                                         <td>94</td>
@@ -295,7 +289,7 @@
                                                             <br />
                                                             <img width="50px" height="50px"
                                                                  src="~/asset/logo.png" /> <img width="50px"
-                                                                                                     height="50px" src="~/asset/logo.png" />
+                                                                                                height="50px" src="~/asset/logo.png" />
                                                         </td>
                                                         <td>Jackson</td>
                                                         <td>94</td>
@@ -312,7 +306,7 @@
                                                             <br />
                                                             <img width="50px" height="50px"
                                                                  src="~/asset/logo.png" /> <img width="50px"
-                                                                                                     height="50px" src="~/asset/logo.png" />
+                                                                                                height="50px" src="~/asset/logo.png" />
                                                         </td>
                                                         <td>Jackson</td>
                                                         <td>94</td>
