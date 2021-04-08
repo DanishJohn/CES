@@ -41,6 +41,7 @@ namespace ParcelDelivery
             services.AddControllers();
             services.AddRazorPages();
             services.AddScoped<ICityService, CityServiceImp>();
+            services.AddScoped<IParcelService, IParcelService>();
 
             ServiceConfigure.RegisterService(services);
 

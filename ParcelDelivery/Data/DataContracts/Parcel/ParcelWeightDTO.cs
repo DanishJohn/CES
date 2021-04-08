@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ParcelDelivery.Data.DataContracts.Enums;
+using ParcelDelivery.Data.Models.Parcel;
 
 namespace ParcelDelivery.Data.DataContracts.Parcel
 {
 	public class ParcelWeightDTO
 	{
-		private ParcelWeightDTO()
+		public ParcelWeightDTO()
 		{
 
 		}
 
+		public ParcelWeightDTO(ParcelWeight parcelWeight)
+        {
+			Id = parcelWeight.Id;
+			Weight = parcelWeight.Weight;
+        }
+
 		public int Id { get; set; }
-		public float Weight { get; set; }
+		public WeightEnum Weight { get; set; }
 	}
 }

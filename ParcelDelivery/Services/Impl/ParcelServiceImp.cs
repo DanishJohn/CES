@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.DataContracts.Parcel;
+using ParcelDelivery.Data.Models.Parcel;
 
 namespace ParcelDelivery.Services.Impl
 {
@@ -19,20 +20,14 @@ namespace ParcelDelivery.Services.Impl
             _context = context;
         }
 
-        public List<ParcelTypeDTO> FindAllParcelTypes()
+        public List<ParcelSize> FindAllParcelSizes()
         {
-            var parcelPriceList = _context.ParcelPrice.Include(x => x.Size)
-                                                       .Include(x => x.Weight).ToList();
-            List<ParcelTypeDTO> parcelTypes = new List<ParcelTypeDTO>();
-            foreach(var item in parcelPriceList)
-            {
-                var parcel = new ParcelTypeDTO
-                {
-                    Name = item.Size.Name,
-                    Size = new ParcelSizeDTO(item.Size)
-                };
-            }
-            return parcelTypes;
+            return _context.ParcelSize.ToList();
+        }
+
+        public List<ParcelWeight> FindAllParcelWeights()
+        {
+            return _context.ParcelWeight.ToList();
         }
     }
 }
