@@ -80,35 +80,5 @@ namespace ParcelDelivery.Services.Impl
             }
             return result;
         }
-
-        public string Print(Graph graph, City start, City end, string path, Dictionary<City,bool> visited)
-        {
-            string newPath = path + "->" + start;
-            visited[start] = true;
-            LinkedList<Node> list = graph.adjacencyList[start];
-            foreach (Node node in list)
-            {
-                if (node.destination != end && visited[node.destination] == false)
-                {
-                    return Print(graph, node.destination, end, newPath, visited);
-                }
-                else if (node.destination == end)
-                {
-                    return $"{newPath} ->{node.destination}";
-                }
-            }
-            //remove from path
-            visited[start] = false;
-            return "Not supported";
-        }
-
-        public string PrintAllPaths(Graph graph, City start, City end)
-        {
-            Dictionary<City, bool> visited = new Dictionary<City,bool>();
-            visited[start] = true;
-            return Print(graph, start, end, "", visited);
-        }
-
-
     }
 }
