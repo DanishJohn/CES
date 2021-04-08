@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.Entity.Routes;
+using ParcelDelivery.Data.DataContracts.Segment;
 
 namespace ParcelDelivery.Controllers
 {
@@ -44,6 +45,14 @@ namespace ParcelDelivery.Controllers
                 graph.addEdge(segment.From, segment.To);
             }
             return _routeService.PrintAllPaths(graph, city1, city2);
+        }
+        [Route("Calculate")]
+        [HttpGet]
+        public List<SegmentResult> GetResult(int fromId, int toId)
+        {
+            City city1 = _cityService.GetCity(fromId);
+            City city2 = _cityService.GetCity(toId);
+            return _routeService.SearchRoute(city1, city2);
         }
     }
 }

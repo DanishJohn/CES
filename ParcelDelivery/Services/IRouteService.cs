@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ParcelDelivery.Data.Entity.Routes;
+using QuickGraph;
+using ParcelDelivery.Data.DataContracts.Segment;
 
 namespace ParcelDelivery.Services
 {
@@ -11,5 +13,8 @@ namespace ParcelDelivery.Services
     {
         public string Print(Graph graph, City start, City end, string path, Dictionary<City, bool> visited);
         public string PrintAllPaths(Graph graph, City start, City end);
+        BidirectionalGraph<string, TaggedEdge<string, string>> BuildGraph(List<Segment> route);
+        List<SegmentResult> SearchRoute(City source, City end);
+
     }
 }
