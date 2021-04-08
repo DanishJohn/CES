@@ -40,6 +40,7 @@ namespace ParcelDelivery
                 .AddDefaultTokenProviders();
             services.AddControllers();
             services.AddRazorPages();
+            services.AddMvc().AddNewtonsoftJson();
             services.AddScoped<ICityService, CityServiceImp>();
             services.AddScoped<IParcelService, ParcelServiceImp>();
 
