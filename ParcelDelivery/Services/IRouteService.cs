@@ -13,7 +13,7 @@ namespace ParcelDelivery.Services
     public interface IRouteService
     {
         BidirectionalGraph<string, TaggedEdge<string, string>> BuildGraph(List<Segment> route);
-        List<RouteResult> SearchRoute(City source, City end);
+        List<RouteResult> SearchRoute(City source, City end, double price);
 
     }
 }

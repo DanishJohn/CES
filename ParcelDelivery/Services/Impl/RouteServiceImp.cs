@@ -42,7 +42,7 @@ namespace ParcelDelivery.Services.Impl
             return routes;
         }
 
-        public List<RouteResult> SearchRoute(City source, City end)
+        public List<RouteResult> SearchRoute(City source, City end, double price)
         {
             var citiesByName = context.City.Where(x => x.IsActive).ToList().ToDictionary(x => x.Name);
             var routes = GetAllRoutes();
@@ -63,6 +63,7 @@ namespace ParcelDelivery.Services.Impl
                 var parts = new List<SegmentResult>();
                 var route = new RouteResult();
                 double time = 0.0;
+                double returnPrice = 0.0;
                 foreach(var edge in shortPath)
                 {
                     parts.Add(new SegmentResult
@@ -72,9 +73,11 @@ namespace ParcelDelivery.Services.Impl
                         EstimatedDuration = 8
                     });
                     time += WeightByTime(edge);
+                    returnPrice += price;
                 }
                 route.Segments = parts;
                 route.TotalDuration = time;
+                route.TotalPrice = returnPrice;
 
                 result.Add(route);
             }

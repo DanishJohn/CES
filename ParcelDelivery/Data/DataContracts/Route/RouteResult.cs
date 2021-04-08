@@ -10,7 +10,7 @@ namespace ParcelDelivery.Data.DataContracts.Route
 	public class RouteResult
 	{
 		public List<SegmentResult> Segments { get; set; }
-		public Decimal TotalPrice { get; set; }
+		public double TotalPrice { get; set; }
 		public double TotalDuration { get; set;  }
 		public CityDTO Departure { get; set; } 
 		public CityDTO Destination { get; set; }

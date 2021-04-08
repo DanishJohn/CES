@@ -11,6 +11,7 @@ namespace ParcelDelivery.Services
 	{
 		public List<ParcelWeight> FindAllParcelWeights();
 		public List<ParcelSize> FindAllParcelSizes();
+		public List<ParcelPrice> FindAllParcelPrices();
 		
 	}
 }

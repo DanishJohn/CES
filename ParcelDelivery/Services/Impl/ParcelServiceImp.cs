@@ -27,7 +27,15 @@ namespace ParcelDelivery.Services.Impl
 
         public List<ParcelWeight> FindAllParcelWeights()
         {
-            return _context.ParcelWeight.ToList();
+            return _context.ParcelWeight.Where(x => x.IsSupported).ToList();
+        }
+
+        public List<ParcelPrice> FindAllParcelPrices()
+        {
+            return _context.ParcelPrice
+                .Include(x => x.Size)
+                .Include(x => x.Weight)
+                .ToList();
         }
     }
 }

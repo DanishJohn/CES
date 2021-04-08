@@ -20,22 +20,30 @@ namespace ParcelDelivery.Controllers
         private readonly ISegmentService _segmentService;
         private readonly IRouteService _routeService;
         private readonly ICityService _cityService;
+        private readonly IPriceService priceService;
+        private readonly ApplicationDbContext context;
 
-        public RoutesController(ISegmentService segmentService, IRouteService routeService,ICityService cityService)
+        public RoutesController(ISegmentService segmentService, IRouteService routeService,ICityService cityService,
+                IPriceService priceService, ApplicationDbContext context)
         {
             _segmentService = segmentService;
             _routeService = routeService;
             _cityService = cityService;
+            this.priceService = priceService;
+            this.context = context;
         }
 
         // GET: api/Routes/Calculate?fromId=xxx&toId=yyy
         [Route("Calculate")]
         [HttpGet]
-        public List<RouteResult> GetResult(int fromId, int toId)
+        public List<RouteResult> GetResult(int fromId, int toId,int weightId, int sizeId)
         {
             City city1 = _cityService.GetCity(fromId);
             City city2 = _cityService.GetCity(toId);
-            return _routeService.SearchRoute(city1, city2);
+            var price = priceService.GetPrice(
+                context.ParcelWeight.Find(weightId),
+                context.ParcelSize.Find(sizeId));
+            return _routeService.SearchRoute(city1, city2, price);
         }
     }
 }
