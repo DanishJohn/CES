@@ -1,0 +1,411 @@
+﻿@page
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+    <link href="~/css/search.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Delivery plan</title>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 550px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* On small screens, set height to 'auto' for the grid */
+        @@media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+
+        tr {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="sidebar navbar-nav">
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item">
+                <a class="nav-link active" href="deliveryPlan.html">
+                    <i class="fa fa-search"></i>
+                    <span>Search routes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="statistics.html">
+                    <i class="fa fa-address-card"></i>
+                    <span>Statistics</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <button class="btn"
+                        style="background-color: transparent; position:absolute; padding-left: 50px;bottom: 0; color: white;">
+                    <i class="fa fa-sign-out"></i> Logout
+                </button>
+
+            </li>
+            <div>
+
+            </div>
+        </ul>
+
+
+
+        <!-- Content of page-->
+        <div id="content-wrapper">
+            <div id="content">
+
+
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-center" style="height: 10vh">
+                        <img src="~/asset/logo.png" class="img-fluid" alt="Oceanic World Air logo">
+                    </div>
+                    <hr />
+                    <div class="card box border-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body"
+                                             style="background-color: rgba(8,67,96,1); text-align: center;">
+                                            <h5 style="color: white; font-size: 25px;">
+                                                Parcel Delivery Price Calculation
+                                            </h5>
+                                            <div id='parcelInformation'>
+                                                <form style="color: white;">
+                                                    <div class="row" style="text-align: left;">
+                                                        <div class="col">
+                                                            <label for="inputDeparture">
+                                                                From <span style="color: red;">*</span>
+                                                            </label>
+                                                            <select id="inputDeparture" class="form-control"
+                                                                    style="background-color: transparent; color: white;">
+                                                                <option selected disabled selected hidden>
+                                                                    Please select
+                                                                    a departure
+                                                                </option>
+                                                                <!-- Please use the C# to populate the list -->
+                                                                <option>...</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="inputDeparture">
+                                                                To <span style="color: red;">*</span>
+                                                            </label>
+                                                            <select id="inputDeparture" class="form-control"
+                                                                    style="background-color: transparent; color: white;">
+                                                                <option selected disabled selected hidden>
+                                                                    Please select
+                                                                    a destination
+                                                                </option>
+                                                                <!-- Please use the C# to populate the list -->
+                                                                <option>...</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row" style="text-align: left;">
+                                                        <div class="col">
+                                                            <div class="card"
+                                                                 style="background-color: transparent; border: 1px solid; height: 35vh;">
+                                                                <div class="card-header">Parcel information</div>
+                                                                <div class="card-body">
+
+                                                                    <label for="inputDeparture">
+                                                                        Category <span style="color: red;">*</span>
+                                                                    </label>
+                                                                    <select id="inputDeparture" class="form-control"
+                                                                            style="background-color: transparent; color: white;"
+                                                                            required>
+                                                                        <option selected disabled selected hidden
+                                                                                style="color: black;">
+                                                                            Please select your
+                                                                            parcel category
+                                                                        </option>
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <option style="color: black;">...</option>
+                                                                    </select>
+                                                                    <label style="color: orange; font-style: italic">
+                                                                        Please
+                                                                        not that we do not support delivery on recorded
+                                                                        delivery and live animals.
+                                                                        Some special types of parcel will be charged an
+                                                                        extra amount.
+                                                                    </label>
+                                                                    <br />
+                                                                    <br />
+                                                                    <label for="inputDeparture">
+                                                                        Weight <span style="color: red;">*</span>
+                                                                    </label>
+                                                                    <select id="inputDeparture" class="form-control"
+                                                                            style="background-color: transparent; color: white;">
+                                                                        <option selected disabled selected hidden>
+                                                                            Please
+                                                                            select your parcel weight
+                                                                        </option>
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <option>...</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="card"
+                                                                 style="background-color: transparent; border: 1px solid; height: 35vh;">
+                                                                <div class="card-header">Parcel dimensions</div>
+                                                                <div class="card-body">
+
+                                                                    <label for="inputDeparture">
+                                                                        Height <span style="color: red;">*</span>
+                                                                    </label>
+                                                                    <select id="inputDeparture" class="form-control"
+                                                                            style="background-color: transparent; color: white;"
+                                                                            required>
+                                                                        <option selected disabled selected hidden
+                                                                                style="color: black;">
+                                                                            Please select your
+                                                                            parcel height
+                                                                        </option>
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <option style="color: black;">
+                                                                            Less than 25
+                                                                        </option>
+                                                                        <option style="color: black;">
+                                                                            Less than 50
+                                                                        </option>
+                                                                        <option style="color: black;">
+                                                                            Less than 60
+                                                                        </option>
+                                                                    </select>
+                                                                    <br />
+                                                                    <label for="inputDeparture">
+                                                                        Depth <span style="color: red;">*</span>
+                                                                    </label>
+                                                                    <select id="inputDeparture" class="form-control"
+                                                                            style="background-color: transparent; color: white;">
+                                                                        <option selected disabled selected hidden>
+                                                                            Please
+                                                                            select your parcel depth
+                                                                        </option>
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <option style="color: black;">
+                                                                            Less than 25
+                                                                        </option>
+                                                                        <option style="color: black;">
+                                                                            Less than 50
+                                                                        </option>
+                                                                        <option style="color: black;">
+                                                                            Less than 60
+                                                                        </option>
+                                                                    </select>
+                                                                    <br />
+                                                                    <label for="inputDeparture">
+                                                                        Breadth <span style="color: red;">*</span>
+                                                                    </label>
+                                                                    <select id="inputDeparture" class="form-control"
+                                                                            style="background-color: transparent; color: white;">
+                                                                        <option selected disabled selected hidden>
+                                                                            Please
+                                                                            select your parcel breadth
+                                                                        </option>
+                                                                        <!-- Please use the C# to populate the list -->
+                                                                        <option style="color: black;">
+                                                                            Less than 25
+                                                                        </option>
+                                                                        <option style="color: black;">
+                                                                            Less than 50
+                                                                        </option>
+                                                                        <option style="color: black;">
+                                                                            Less than 60
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row" style="align-items: center; text-align: center;">
+                                                        <div class="col">
+                                                            <button class="btn btn-lg" type="submit"
+                                                                    style="padding-left: 50px; padding-right: 50px; background-color: rgba(0,29,65,1); color: white; font-weight: bold;">
+                                                                Calculate
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <br>
+                                                <hr style="background-color: white; margin-left: 100px;  margin-right: 100px" />
+                                                <h5 style="color: white; font-size: 25px;">Search result</h5>
+                                                <p style="color: white; text-align: left; font-style: italic; font-size: 15px; font-weight: lighter; padding-left: 100px;">
+                                                    Found 2 items
+                                                </p>
+                                                <!-- add result here -->
+                                                <table style="color: white; width:100%; font-style: italic; font-size: 18px; padding: 50px; border-collapse:separate; border-spacing:0 20px;">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Estimated total time arrival</th>
+                                                        <th>Total price</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Marrakesh <i class="fa fa-arrow-right"></i> Timbuktu
+                                                            <br />
+                                                            <img width="50px" height="50px"
+                                                                 src="~/asset/logo.png" /> <img width="50px"
+                                                                                                     height="50px" src="~/asset/logo.png" />
+                                                        </td>
+                                                        <td>Jackson</td>
+                                                        <td>94</td>
+                                                        <td>
+                                                            <button class="btn btn-light" data-toggle="modal"
+                                                                    data-target="#exampleModal">
+                                                                View detail
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Marrakesh <i class="fa fa-arrow-right"></i> Timbuktu
+                                                            <br />
+                                                            <img width="50px" height="50px"
+                                                                 src="~/asset/logo.png" /> <img width="50px"
+                                                                                                     height="50px" src="~/asset/logo.png" />
+                                                        </td>
+                                                        <td>Jackson</td>
+                                                        <td>94</td>
+                                                        <td>
+                                                            <button class="btn btn-light" data-toggle="modal"
+                                                                    data-target="#exampleModal">
+                                                                View detail
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Marrakesh <i class="fa fa-arrow-right"></i> Timbuktu
+                                                            <br />
+                                                            <img width="50px" height="50px"
+                                                                 src="~/asset/logo.png" /> <img width="50px"
+                                                                                                     height="50px" src="~/asset/logo.png" />
+                                                        </td>
+                                                        <td>Jackson</td>
+                                                        <td>94</td>
+                                                        <td>
+                                                            <button class="btn btn-light" data-toggle="modal"
+                                                                    data-target="#exampleModal">
+                                                                View detail
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="color: white; background-color:  rgba(8,67,96,1);">
+                    <h5 class="modal-title" id="exampleModalLabel">Route detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Operated by</th>
+                            <th>Estimated duration</th>
+                            <th>Price</th>
+                            <th>Extra fee</th>
+                            <th>Total price</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Marrakesh
+
+                            </td>
+                            <td>Timbuktu</td>
+                            <td> <img width="50px" height="50px" src="~/asset/logo.png" /></td>
+                            <td>8 hours</td>
+                            <td>5$</td>
+                            <td>5$</td>
+                            <td>5$</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Marrakesh
+
+                            </td>
+                            <td>Timbuktu</td>
+                            <td> <img width="50px" height="50px" src="~/asset/logo.png" /></td>
+                            <td>8 hours</td>
+                            <td>5$</td>
+                            <td>5$</td>
+                            <td>5$</td>
+                        </tr>
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

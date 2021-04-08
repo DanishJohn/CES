@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using webAppTest.Data;
-using webAppTest.Data.Entity.Routes;
+using ParcelDelivery.Data;
+using ParcelDelivery.Data.Entity.Routes;
 
 namespace ParcelDelivery.Controllers
 {

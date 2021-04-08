@@ -10,8 +10,8 @@ using ParcelDelivery.Data;
 namespace ParcelDelivery.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210408082911_ParcelCategory")]
-    partial class ParcelCategory
+    [Migration("20210408120940_SeedUserAndRenameParcelCat")]
+    partial class SeedUserAndRenameParcelCat
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,22 @@ namespace ParcelDelivery.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "8dfc8646-0077-48a6-8ce3-50387939f190",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "c5194a63-c497-40dd-98e2-d2c6e3c5f5dd",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -135,6 +151,22 @@ namespace ParcelDelivery.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c58e0ed0-8b4b-430a-976b-ace43ce5949c",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA+ujNcnn4kA7eZ/1Z95N8m7ouYUdyiUJGPKo6zEhv34KZg3x6KdIOJHh9+qT5YvBg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "db00eec1-93b5-4e7a-a412-bd99b16eaefc",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -196,6 +228,13 @@ namespace ParcelDelivery.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -217,12 +256,15 @@ namespace ParcelDelivery.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Entity.Routes.City", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Entity.Routes.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -235,7 +277,7 @@ namespace ParcelDelivery.Migrations
                     b.ToTable("City");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Entity.Routes.SearchedCityHistory", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Entity.Routes.SearchedCityHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -258,7 +300,7 @@ namespace ParcelDelivery.Migrations
                     b.ToTable("SearchedCityHistory");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Entity.Routes.Segment", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Entity.Routes.Segment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -286,7 +328,7 @@ namespace ParcelDelivery.Migrations
                     b.ToTable("Segment");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Models.Parcel.ParcelCategory", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Models.Parcel.ParcelCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -304,10 +346,10 @@ namespace ParcelDelivery.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parcelcategory");
+                    b.ToTable("ParcelCategory");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Models.Parcel.ParcelPrice", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Models.Parcel.ParcelPrice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -332,7 +374,7 @@ namespace ParcelDelivery.Migrations
                     b.ToTable("ParcelPrice");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Models.Parcel.ParcelSize", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Models.Parcel.ParcelSize", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -356,15 +398,18 @@ namespace ParcelDelivery.Migrations
                     b.ToTable("ParcelSize");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Models.Parcel.ParcelWeight", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Models.Parcel.ParcelWeight", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float>("Weight")
-                        .HasColumnType("real");
+                    b.Property<bool>("IsSupported")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -422,22 +467,22 @@ namespace ParcelDelivery.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Entity.Routes.SearchedCityHistory", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Entity.Routes.SearchedCityHistory", b =>
                 {
-                    b.HasOne("webAppTest.Data.Entity.Routes.City", "City")
+                    b.HasOne("ParcelDelivery.Data.Entity.Routes.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId");
 
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Entity.Routes.Segment", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Entity.Routes.Segment", b =>
                 {
-                    b.HasOne("webAppTest.Data.Entity.Routes.City", "From")
+                    b.HasOne("ParcelDelivery.Data.Entity.Routes.City", "From")
                         .WithMany()
                         .HasForeignKey("FromId");
 
-                    b.HasOne("webAppTest.Data.Entity.Routes.City", "To")
+                    b.HasOne("ParcelDelivery.Data.Entity.Routes.City", "To")
                         .WithMany()
                         .HasForeignKey("ToId");
 
@@ -446,13 +491,13 @@ namespace ParcelDelivery.Migrations
                     b.Navigation("To");
                 });
 
-            modelBuilder.Entity("webAppTest.Data.Models.Parcel.ParcelPrice", b =>
+            modelBuilder.Entity("ParcelDelivery.Data.Models.Parcel.ParcelPrice", b =>
                 {
-                    b.HasOne("webAppTest.Data.Models.Parcel.ParcelSize", "Size")
+                    b.HasOne("ParcelDelivery.Data.Models.Parcel.ParcelSize", "Size")
                         .WithMany()
                         .HasForeignKey("SizeId");
 
-                    b.HasOne("webAppTest.Data.Models.Parcel.ParcelWeight", "Weight")
+                    b.HasOne("ParcelDelivery.Data.Models.Parcel.ParcelWeight", "Weight")
                         .WithMany()
                         .HasForeignKey("WeightId");
 

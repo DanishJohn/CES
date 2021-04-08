@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data;
-using webAppTest.Data.Entity.Routes;
+using ParcelDelivery.Data;
+using ParcelDelivery.Data.Entity.Routes;
 
-namespace webAppTest.Services.Impl
+namespace ParcelDelivery.Services.Impl
 {
     public class CityServiceImp : ICityService
     {

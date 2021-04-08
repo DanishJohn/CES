@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 
-namespace webAppTest.Data.DataContracts.City
+namespace ParcelDelivery.Data.DataContracts.City
 {
 	public class CityReportResult
 	{

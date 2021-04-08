@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data.Models;
+using ParcelDelivery.Data.Models;
 
-namespace webAppTest.Data.Context.EntityConfiguration
+namespace ParcelDelivery.Data.Context.EntityConfiguration
 {
     public class RoleEntityConfiguration : IEntityTypeConfiguration<Role>
     {

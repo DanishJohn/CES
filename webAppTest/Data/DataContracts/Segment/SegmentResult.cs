@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data.DataContracts.City;
+using ParcelDelivery.Data.DataContracts.City;
 
-namespace webAppTest.Data.DataContracts.Segment
+namespace ParcelDelivery.Data.DataContracts.Segment
 {
 	public class SegmentResult
 	{

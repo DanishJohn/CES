@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace webAppTest.Data.Models.Auth
+namespace ParcelDelivery.Data.Models.Auth
 {
     public class User
     {

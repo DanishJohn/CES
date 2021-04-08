@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace webAppTest.Data.DataContracts.City
+namespace ParcelDelivery.Data.DataContracts.City
 {
 	public class CityDTO
 	{

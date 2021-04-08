@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace webAppTest.Data.Models.Parcel
+namespace ParcelDelivery.Data.Models.Parcel
 {
     public class ParcelCategory
     {

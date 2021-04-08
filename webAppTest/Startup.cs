@@ -11,11 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data;
-using webAppTest.Data.Models;
-using webAppTest.Data.Models.Auth;
+using ParcelDelivery.Data;
+using ParcelDelivery.Data.Models;
+using ParcelDelivery.Data.Models.Auth;
 
-namespace webAppTest
+namespace ParcelDelivery
 {
     public class Startup
     {
