@@ -1,4 +1,5 @@
 ﻿@page
+@using ParcelDelivery.Data.DataContracts.Segment
 @model ParcelDelivery.Pages.Search.SearchPageModel
 <!doctype html>
 <html lang="en">
@@ -10,35 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../css/style.css" type="text/css" />
     <link href="~/css/search.css" rel="stylesheet" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Delivery plan</title>
-    <style>
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 550px
-        }
-
-        /* Set gray background color and 100% height */
-        .sidenav {
-            background-color: #f1f1f1;
-            height: 100%;
-        }
-
-        /* On small screens, set height to 'auto' for the grid */
-        @@media screen and (max-width: 767px) {
-            .row.content {
-                height: auto;
-            }
-        }
-
-        tr {
-            border: 1px solid black;
-        }
-    </style>
 </head>
 
 <body>
@@ -49,13 +29,13 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link active" href="deliveryPlan.html">
+                <a class="nav-link active" href="./search">
                     <i class="fa fa-search"></i>
                     <span>Search routes</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="statistics.html">
+                <a class="nav-link" href="./report">
                     <i class="fa fa-address-card"></i>
                     <span>Statistics</span>
                 </a>
@@ -68,9 +48,6 @@
                 </button>
 
             </li>
-            <div>
-
-            </div>
         </ul>
 
 
@@ -96,7 +73,7 @@
                                                 Parcel Delivery Price Calculation
                                             </h5>
                                             <div id='parcelInformation'>
-                                                <form style="color: white;">
+                                                <form style="color: white;" method="post">
                                                     <div class="row" style="text-align: left;">
 
                                                         <div class="col">
@@ -104,15 +81,6 @@
                                                                 From <span style="color: red;">*</span>
                                                             </label>
                                                             <select class="form-control" asp-for="departureCityId" asp-items="@Model.cityList"></select>
-                                                            <!--<select id="inputDeparture" class="form-control"
-                                                                    style="background-color: transparent; color: white;">
-                                                                <option selected disabled selected hidden>
-                                                                    Please select
-                                                                    a departure
-                                                                </option>-->
-                                                            <!-- Please use the C# to populate the list -->
-                                                            <!--<option>...</option>
-                                                            </select>-->
                                                         </div>
                                                         <div class="col">
                                                             <label for="inputDeparture">
@@ -243,70 +211,70 @@
                                                     </div>
                                                 </form>
                                                 <br>
-                                                <hr style="background-color: white; margin-left: 100px;  margin-right: 100px" />
-                                                <h5 style="color: white; font-size: 25px;">Search result</h5>
-                                                <p style="color: white; text-align: left; font-style: italic; font-size: 15px; font-weight: lighter; padding-left: 100px;">
-                                                    Found 2 items
-                                                </p>
-                                                <!-- add result here -->
-                                                <table style="color: white; width:100%; font-style: italic; font-size: 18px; padding: 50px; border-collapse:separate; border-spacing:0 20px;">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Estimated total time arrival</th>
-                                                        <th>Total price</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Marrakesh <i class="fa fa-arrow-right"></i> Timbuktu
-                                                            <br />
-                                                            <img width="50px" height="50px"
-                                                                 src="~/asset/logo.png" /> <img width="50px"
-                                                                                                height="50px" src="~/asset/logo.png" />
-                                                        </td>
-                                                        <td>Jackson</td>
-                                                        <td>94</td>
-                                                        <td>
-                                                            <button class="btn btn-light" data-toggle="modal"
-                                                                    data-target="#exampleModal">
-                                                                View detail
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Marrakesh <i class="fa fa-arrow-right"></i> Timbuktu
-                                                            <br />
-                                                            <img width="50px" height="50px"
-                                                                 src="~/asset/logo.png" /> <img width="50px"
-                                                                                                height="50px" src="~/asset/logo.png" />
-                                                        </td>
-                                                        <td>Jackson</td>
-                                                        <td>94</td>
-                                                        <td>
-                                                            <button class="btn btn-light" data-toggle="modal"
-                                                                    data-target="#exampleModal">
-                                                                View detail
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Marrakesh <i class="fa fa-arrow-right"></i> Timbuktu
-                                                            <br />
-                                                            <img width="50px" height="50px"
-                                                                 src="~/asset/logo.png" /> <img width="50px"
-                                                                                                height="50px" src="~/asset/logo.png" />
-                                                        </td>
-                                                        <td>Jackson</td>
-                                                        <td>94</td>
-                                                        <td>
-                                                            <button class="btn btn-light" data-toggle="modal"
-                                                                    data-target="#exampleModal">
-                                                                View detail
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+
+                                                @if (@Model.searchResult != null)
+                                                {
+                                                    <hr style="background-color: white; margin-left: 100px;  margin-right: 100px" />
+                                                    <h5 style="color: white; font-size: 25px;">Search result</h5>
+
+
+                                                    var totalResults = @Model.searchResult.Count;
+
+                                                    if (totalResults == 1)
+                                                    {
+                                                        <p style="color: white; text-align: left; font-style: italic; font-size: 15px; font-weight: lighter; padding-left: 100px;">
+                                                            Found 1 item
+                                                        </p>
+                                                    }
+                                                    if (totalResults > 1)
+                                                    {
+                                                        <p style="color: white; text-align: left; font-style: italic; font-size: 15px; font-weight: lighter; padding-left: 100px;">
+                                                            Found @totalResults item
+                                                        </p>
+                                                    }
+
+
+                                                    <table style="color: white; width:100%; font-style: italic; font-size: 18px; padding: 50px; border-collapse:separate; border-spacing:0 20px;">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Estimated total time arrival (hours)</th>
+                                                            <th>Total price ($)</th>
+                                                        </tr>
+                                                        @foreach (var result in @Model.searchResult)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
+                                                                    <br />
+
+                                                                    @foreach (var company in @result.TransportationCompanies)
+                                                                    {
+                                                                        @if (company == TransportationCompany.OA)
+                                                                        {
+                                                                            <img src="~/asset/oa.png" /> 
+                                                                        }
+                                                                        @if (company == TransportationCompany.TL)
+                                                                        {
+                                                                            <img src="~/asset/tl.png" /> 
+                                                                        }
+                                                                        @if (company == TransportationCompany.EIT)
+                                                                        {
+                                                                            <img src="~/asset/eit.png" /> 
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>@result.TotalDuration</td>
+                                                                <td>@result.TotalPrice</td>
+                                                                <td>
+                                                                    <button class="btn btn-light" data-toggle="modal" data-content=""
+                                                                            data-target="#modal">
+                                                                        View detail
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -325,7 +293,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -346,23 +314,11 @@
                             <th>Extra fee</th>
                             <th>Total price</th>
                         </tr>
-                        <tr>
-                            <td>
-                                Marrakesh
 
-                            </td>
-                            <td>Timbuktu</td>
-                            <td> <img width="50px" height="50px" src="~/asset/logo.png" /></td>
-                            <td>8 hours</td>
-                            <td>5$</td>
-                            <td>5$</td>
-                            <td>5$</td>
-                        </tr>
 
                         <tr>
                             <td>
                                 Marrakesh
-
                             </td>
                             <td>Timbuktu</td>
                             <td> <img width="50px" height="50px" src="~/asset/logo.png" /></td>
