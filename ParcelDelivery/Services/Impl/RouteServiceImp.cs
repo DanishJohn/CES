@@ -9,6 +9,7 @@ using QuickGraph.Algorithms;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.DataContracts.Segment;
 using ParcelDelivery.Data.DataContracts.Route;
+using ParcelDelivery.Data.DataContracts.City;
 
 namespace ParcelDelivery.Services.Impl
 {
@@ -70,7 +71,8 @@ namespace ParcelDelivery.Services.Impl
                     {
                         Departure = new Data.DataContracts.City.CityDTO { Name = edge.Source.ToString() },
                         Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString()},
-                        EstimatedDuration = 8
+                        EstimatedDuration = 8,
+                        TransportationCompany = TransportationCompany.OA
                     });
                     time += WeightByTime(edge);
                     returnPrice += price;
@@ -78,6 +80,9 @@ namespace ParcelDelivery.Services.Impl
                 route.Segments = parts;
                 route.TotalDuration = time;
                 route.TotalPrice = returnPrice;
+                route.Departure = new CityDTO { Name = source.Name };
+                route.Destination = new CityDTO { Name = end.Name };
+                route.GetDistinctTransportationCompany();
 
                 result.Add(route);
             }

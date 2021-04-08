@@ -8,7 +8,12 @@ namespace ParcelDelivery.Data.DataContracts.Search
 {
 	public class SearchResult
 	{
-		public List<RouteResult> routes { get; set; }
+        public SearchResult(List<RouteResult> routes)
+        {
+            this.routes = routes;
+        }
+
+        public List<RouteResult> routes { get; set; }
 
 	}
 }

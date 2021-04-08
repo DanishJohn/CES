@@ -19,7 +19,7 @@ namespace ParcelDelivery.Services.Impl
 
         public List<City> FindAllCities()
         {
-            return _context.City.ToList();
+            return _context.City.OrderBy(c => c.Name).ToList();
         }
 
         public City GetCity(int id)
