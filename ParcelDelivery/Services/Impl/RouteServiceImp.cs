@@ -71,7 +71,7 @@ namespace ParcelDelivery.Services.Impl
                     });
                     time += WeightByTime(edge);
                 }
-                route.Parts = parts;
+                route.RouteResult = parts;
                 route.EstimatedDuration = time;
 
                 result.Add(route);

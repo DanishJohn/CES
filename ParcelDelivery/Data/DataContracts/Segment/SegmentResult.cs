@@ -13,7 +13,7 @@ namespace ParcelDelivery.Data.DataContracts.Segment
 		public Decimal Price { get; set; }
 		public Decimal ExtraFee { get; set; }
 		public Decimal TotalPrice { get; set; }
-		public List<SegmentDTO> Parts { get; set; }
+		public List<SegmentDTO> RouteResult { get; set; }
 
 	}
 }
