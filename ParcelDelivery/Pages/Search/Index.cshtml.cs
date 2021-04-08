@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ParcelDelivery.Data.Entity.Routes;
+using ParcelDelivery.Data.Models.Parcel;
 using ParcelDelivery.Services;
 
 namespace ParcelDelivery.Pages.Search
@@ -13,13 +14,16 @@ namespace ParcelDelivery.Pages.Search
     public class SearchPageModel : PageModel
     {
         private readonly ICityService _cityService;
+        private readonly IParcelCategoryService _parcelCategoryService;
 
-        public SearchPageModel(ICityService cityService)
+        public SearchPageModel(ICityService cityService, IParcelCategoryService parcelCategoryService)
         {
             _cityService = cityService;
+            _parcelCategoryService = parcelCategoryService;
         }
 
         public SelectList cityList { get; set; }
+        public SelectList categoryList { get; set; }
 
         [BindProperty]
         public int departureCityId { get; set; }
@@ -27,10 +31,13 @@ namespace ParcelDelivery.Pages.Search
         [BindProperty]
         public int destinationCityId { get; set; }
 
+        [BindProperty]
+        public int categoryId { get; set; }
+
         public IActionResult OnGet()
         {
-            var cities = _cityService.FindAllCities();
-            cityList = new SelectList(cities, nameof(City.Id), nameof(City.Name), null, null);
+            cityList = new SelectList(_cityService.FindAllCities(), nameof(City.Id), nameof(City.Name), null, null);
+            categoryList = new SelectList(_parcelCategoryService.FindAllCategories(), nameof(ParcelCategory.Id), nameof(ParcelCategory.Name), null, null);
 
 
             return Page();
