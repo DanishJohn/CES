@@ -28,7 +28,7 @@ namespace ParcelDelivery.Services.Impl
                 {
                     Id = acc.Id,
                     Name = acc.UserName,
-                    Role = roleList.SingleOrDefault(x => x.UserId == acc.Id).role
+                    Role = roleList.SingleOrDefault(x => x.UserId == acc.Id).RoleId,
                 });
             }
             return userDatas;
