@@ -23,6 +23,7 @@ namespace ParcelDelivery.Data
         public DbSet<ParcelWeight> ParcelWeight { get; set; }
         public DbSet<ParcelPrice> ParcelPrice { get; set; }
         public DbSet<ParcelCategory> ParcelCategory { get; set; }
+        public DbSet<SearchRouteHistory> SearchRouteHistory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

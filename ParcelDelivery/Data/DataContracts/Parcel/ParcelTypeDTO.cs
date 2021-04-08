@@ -15,12 +15,14 @@ namespace ParcelDelivery.Data.DataContracts.Parcel
 		{
 			Name = parcelPrice.Size.Name;
 			Size = new ParcelSizeDTO(parcelPrice.Size);
+			Weight = new ParcelWeightDTO(parcelPrice.Weight);
 		}
 
 		public String Name { get; set; }
+
 		public ParcelSizeDTO Size { get; set; }
 
-		public Dictionary<ParcelWeightDTO, Decimal> PriceByWeight { get; set; }
+		public ParcelWeightDTO Weight { get; set; }
 
 	}
 
