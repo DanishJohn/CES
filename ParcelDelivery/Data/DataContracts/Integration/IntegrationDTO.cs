@@ -10,6 +10,6 @@ namespace ParcelDelivery.Data.DataContracts.Integration
     {
         public string CompanyName { get; set; }
         public string ShippingType { get; set; }
-        public RouteIntegrationDTO Route { get; set; }
+        public ICollection<RouteIntegrationDTO> Routes { get; set; } = new List<RouteIntegrationDTO>();
     }
 }
