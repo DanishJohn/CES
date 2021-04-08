@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace webAppTest.Data.Entity.Routes
+namespace ParcelDelivery.Data.Entity.Routes
 {
     public class City
     {

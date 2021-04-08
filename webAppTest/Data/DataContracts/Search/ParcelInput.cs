@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
-using webAppTest.Data.Models.Parcel;
+using ParcelDelivery.Data.Models.Parcel;
 
-namespace webAppTest.Data.DataContracts.Parcel
+namespace ParcelDelivery.Data.DataContracts.Parcel
 {
 	public class ParcelInput
 	{

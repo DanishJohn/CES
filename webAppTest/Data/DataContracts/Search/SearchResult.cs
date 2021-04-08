@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data.DataContracts.Route;
+using ParcelDelivery.Data.DataContracts.Route;
 
-namespace webAppTest.Data.DataContracts.Search
+namespace ParcelDelivery.Data.DataContracts.Search
 {
 	public class SearchResult
 	{

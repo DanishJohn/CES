@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace webAppTest.Data.DataContracts.Search
+namespace ParcelDelivery.Data.DataContracts.Search
 {
 	public class CityReportInput
 	{

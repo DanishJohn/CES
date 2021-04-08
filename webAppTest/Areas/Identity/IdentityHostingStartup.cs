@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using webAppTest.Data;
+using ParcelDelivery.Data;
 
 [assembly: HostingStartup(typeof(ParcelDelivery.Areas.Identity.IdentityHostingStartup))]
 namespace ParcelDelivery.Areas.Identity

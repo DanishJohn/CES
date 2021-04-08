@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data.Models.Auth;
+using ParcelDelivery.Data.Models.Auth;
 
-namespace webAppTest.Data.Models
+namespace ParcelDelivery.Data.Models
 {
     public class Role
     {

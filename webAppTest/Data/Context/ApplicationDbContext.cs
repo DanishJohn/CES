@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
-using webAppTest.Data.Entity.Routes;
-using webAppTest.Data.Models.Parcel;
+using ParcelDelivery.Data.Entity.Routes;
+using ParcelDelivery.Data.Models.Parcel;
 
-namespace webAppTest.Data
+namespace ParcelDelivery.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -20,7 +22,36 @@ namespace webAppTest.Data
         public DbSet<ParcelSize> ParcelSize { get; set; }
         public DbSet<ParcelWeight> ParcelWeight { get; set; }
         public DbSet<ParcelPrice> ParcelPrice { get; set; }
-        public DbSet<ParcelCategory> Parcelcategory { get; set; }
+        public DbSet<ParcelCategory> ParcelCategory { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            IdentityRole[] seedRoles = {new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN"},
+                                        new IdentityRole {Id = "2", Name = "User", NormalizedName = "USER" } };
+            builder.Entity<IdentityRole>().HasData(seedRoles);
+
+            var haser = new PasswordHasher<IdentityRole>();
+            builder.Entity<IdentityUser>().HasData(
+                new IdentityUser
+                {
+                    Id = "1",
+                    UserName = "admin",
+                    NormalizedUserName = "ADMIN",
+                    PasswordHash = haser.HashPassword(null, "admin"),
+                    EmailConfirmed = false,
+                    PhoneNumberConfirmed = false,
+                    TwoFactorEnabled = false,
+                    LockoutEnabled = false,
+                });
+
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = "1",
+                    UserId = "1"
+                });
+        }
     }
 }

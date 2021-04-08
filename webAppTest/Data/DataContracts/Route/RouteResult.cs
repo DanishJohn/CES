@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data.DataContracts.City;
-using webAppTest.Data.DataContracts.Segment;
+using ParcelDelivery.Data.DataContracts.City;
+using ParcelDelivery.Data.DataContracts.Segment;
 
-namespace webAppTest.Data.DataContracts.Route
+namespace ParcelDelivery.Data.DataContracts.Route
 {
 	public class RouteResult
 	{
