@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using webAppTest.Data.Entity.Routes;
 
 namespace ParcelDelivery.Routing
 {
     public class Node
     {
-        public int source { get; set; }
-        public int destination { get; set; }
 
-        public Node(int source, int destination)
+        public City source { get; set; }
+        public City destination { get; set; }
+
+        public Node(City source, City destination)
         {
             this.source = source;
             this.destination = destination;

@@ -9,5 +9,6 @@ namespace webAppTest.Services
     public interface ICityService
     {
         public List<City> FindAllCities();
+        public City GetCity(int id);
     }
 }

@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using webAppTest.Data.Entity.Routes;
 
 namespace ParcelDelivery.Routing
 {
     public class Graph
     {
-        public int vertices { get; set; }
-        public LinkedList<Node>[] adjacencyList { get; set; }
+        public HashSet<City> vertices { get; set; }
+        public Dictionary<City,LinkedList<Node>> adjacencyList { get; set; }
 
-        public Graph(int vertices)
+        public Graph(HashSet<City> vertices)
         {
             this.vertices = vertices;
-            adjacencyList = new LinkedList<Node>[vertices];
-            for (int i = 0; i < vertices; i++)
+            adjacencyList = new Dictionary<City, LinkedList<Node>>();
+            foreach (City i in  vertices)
             {
                 adjacencyList[i] = new LinkedList<Node>();
             }
         }
 
-        public void addEdge(int source, int destination)
+        public void addEdge(City source, City destination)
         {
             Node node = new Node(source, destination);
             //add edge

@@ -1,13 +1,15 @@
-﻿using System;
+﻿using ParcelDelivery.Routing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using webAppTest.Data.Entity.Routes;
 
-namespace ParcelDelivery.Routing
+namespace ParcelDelivery.Services.Impl
 {
-    public class FindRoutes
+    public class RouteServiceImp : IRouteService
     {
-        public void Print(Graph graph, int start, int end, string path, bool[] visited)
+        public string Print(Graph graph, City start, City end, string path, Dictionary<City,bool> visited)
         {
             string newPath = path + "->" + start;
             visited[start] = true;
@@ -16,22 +18,23 @@ namespace ParcelDelivery.Routing
             {
                 if (node.destination != end && visited[node.destination] == false)
                 {
-                    Print(graph, node.destination, end, newPath, visited);
+                    return Print(graph, node.destination, end, newPath, visited);
                 }
                 else if (node.destination == end)
                 {
-                    Console.WriteLine(newPath + "->" + node.destination);
+                    return $"{newPath} ->{node.destination}";
                 }
             }
             //remove from path
             visited[start] = false;
+            return "Not supported";
         }
 
-        public void PrintAllPaths(Graph graph, int start, int end)
+        public string PrintAllPaths(Graph graph, City start, City end)
         {
-            bool[] visited = new bool[graph.vertices];
+            Dictionary<City, bool> visited = new Dictionary<City,bool>();
             visited[start] = true;
-            Print(graph, start, end, "", visited);
+            return Print(graph, start, end, "", visited);
         }
     }
 }

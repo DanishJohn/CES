@@ -21,5 +21,10 @@ namespace webAppTest.Services.Impl
         {
             return _context.City.ToList();
         }
+
+        public City GetCity(int id)
+        {
+            return _context.City.Find(id);
+        }
     }
 }
