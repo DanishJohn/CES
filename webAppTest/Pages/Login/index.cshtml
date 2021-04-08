@@ -1,0 +1,71 @@
+﻿@page
+@model ParcelDelivery.Areas.Identity.Pages.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="row" style="width: 100%;">
+            <div class="col d-none d-sm-block">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100vh">
+                    <img src="~/asset/logo.png" class="img-fluid" alt="Oceanic World Air logo">
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: rgba(8,67,96,1); color: white;">
+                    <form class="form-signin" method="post">
+                        <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </div>
+                            <input asp-for="Input.Username" class="form-control" placeholder="User name" required autofocus>
+                        </div>
+
+                        <br />
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </div>
+                            <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <br />
+                        <button class="btn btn-lg btn-block" type="submit" style="padding-left: 20px; padding-right: 20px; background-color: rgba(0,29,65,1); color: white; font-weight: bold;">LOGIN</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
