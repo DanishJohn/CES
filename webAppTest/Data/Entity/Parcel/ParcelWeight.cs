@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParcelDelivery.Data.DataContracts.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace webAppTest.Data.Models.Parcel
         }
 
         public int Id { get; set; }
-        public float Weight { get; set; }
+        public WeightEnum Weight { get; set; }
+        public bool IsSupported { get; set; }
     }
 }
