@@ -334,6 +334,16 @@ namespace ParcelDelivery.Migrations
                 name: "IX_Segment_ToId",
                 table: "Segment",
                 column: "ToId");
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name", "NormalizedName" },
+                values: new object[] {"1", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name", "NormalizedName" },
+                values: new object[] { "2", "User", "USER" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
