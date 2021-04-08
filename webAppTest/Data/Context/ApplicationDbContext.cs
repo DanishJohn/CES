@@ -20,6 +20,7 @@ namespace webAppTest.Data
         public DbSet<ParcelSize> ParcelSize { get; set; }
         public DbSet<ParcelWeight> ParcelWeight { get; set; }
         public DbSet<ParcelPrice> ParcelPrice { get; set; }
+        public DbSet<ParcelCategory> Parcelcategory { get; set; }
 
     }
 }
