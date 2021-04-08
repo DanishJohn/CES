@@ -53,7 +53,7 @@ namespace ParcelDelivery.Services.Impl
                 return 8;
             }
 
-                var shortestPath = graph.RankedShortestPathHoffmanPavley(WeightByTime, source.Name, end.Name, 2);
+                var shortestPath = graph.RankedShortestPathHoffmanPavley(WeightByTime, source.Name, end.Name, 4);
 
             var result = new List<SegmentResult>();
 
