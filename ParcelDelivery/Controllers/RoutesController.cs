@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.Entity.Routes;
 using ParcelDelivery.Data.DataContracts.Segment;
+using ParcelDelivery.Data.DataContracts.Route;
 
 namespace ParcelDelivery.Controllers
 {
@@ -30,7 +31,7 @@ namespace ParcelDelivery.Controllers
         // GET: api/Routes/Calculate?fromId=xxx&toId=yyy
         [Route("Calculate")]
         [HttpGet]
-        public List<SegmentResult> GetResult(int fromId, int toId)
+        public List<RouteResult> GetResult(int fromId, int toId)
         {
             City city1 = _cityService.GetCity(fromId);
             City city2 = _cityService.GetCity(toId);

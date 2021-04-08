@@ -8,6 +8,7 @@ using QuickGraph;
 using QuickGraph.Algorithms;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.DataContracts.Segment;
+using ParcelDelivery.Data.DataContracts.Route;
 
 namespace ParcelDelivery.Services.Impl
 {
@@ -41,7 +42,7 @@ namespace ParcelDelivery.Services.Impl
             return routes;
         }
 
-        public List<SegmentResult> SearchRoute(City source, City end)
+        public List<RouteResult> SearchRoute(City source, City end)
         {
             var citiesByName = context.City.Where(x => x.IsActive).ToList().ToDictionary(x => x.Name);
             var routes = GetAllRoutes();
@@ -55,25 +56,25 @@ namespace ParcelDelivery.Services.Impl
 
                 var shortestPath = graph.RankedShortestPathHoffmanPavley(WeightByTime, source.Name, end.Name, 4);
 
-            var result = new List<SegmentResult>();
+            var result = new List<RouteResult>();
 
             foreach (var shortPath in shortestPath)
             {
-                var parts = new List<SegmentDTO>();
-                var route = new SegmentResult();
+                var parts = new List<SegmentResult>();
+                var route = new RouteResult();
                 double time = 0.0;
                 foreach(var edge in shortPath)
                 {
-                    parts.Add(new SegmentDTO
+                    parts.Add(new SegmentResult
                     {
                         Departure = new Data.DataContracts.City.CityDTO { Name = edge.Source.ToString() },
                         Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString()},
-                        Duration = 8
+                        EstimatedDuration = 8
                     });
                     time += WeightByTime(edge);
                 }
-                route.RouteResult = parts;
-                route.EstimatedDuration = time;
+                route.Segments = parts;
+                route.TotalDuration = time;
 
                 result.Add(route);
             }
