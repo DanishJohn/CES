@@ -39,6 +39,8 @@ namespace ParcelDelivery
             services.AddControllers();
             services.AddRazorPages();
 
+            ServiceConfigure.RegisterService(services);
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
