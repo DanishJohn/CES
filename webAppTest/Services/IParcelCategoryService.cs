@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data.Models.Parcel;
+using ParcelDelivery.Data.Models.Parcel;
 
-namespace webAppTest.Services
+namespace ParcelDelivery.Services
 {
 	public interface IParcelCategoryService
 	{

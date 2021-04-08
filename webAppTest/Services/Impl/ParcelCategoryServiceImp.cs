@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webAppTest.Data;
-using webAppTest.Data.Models.Parcel;
+using ParcelDelivery.Data;
+using ParcelDelivery.Data.Models.Parcel;
 
-namespace webAppTest.Services.Impl
+namespace ParcelDelivery.Services.Impl
 {
 	public class ParcelCategoryServiceImp : IParcelCategoryService
 	{
