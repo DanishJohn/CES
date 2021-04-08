@@ -11,7 +11,7 @@ using webAppTest.Data.Entity.Routes;
 
 namespace ParcelDelivery.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class CitiesController : ControllerBase

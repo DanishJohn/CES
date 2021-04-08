@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using webAppTest.Data;
+using webAppTest.Data.Models;
+using webAppTest.Data.Models.Auth;
 
 namespace webAppTest
 {
@@ -31,9 +33,9 @@ namespace webAppTest
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             services.AddControllers();
             services.AddRazorPages();
 
@@ -55,6 +57,8 @@ namespace webAppTest
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
+
+             
             });
             services.ConfigureApplicationCookie(options =>
             {
@@ -63,10 +67,9 @@ namespace webAppTest
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
                 options.LoginPath = "/Identity/Account/Login";
-                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.AccessDeniedPath = "/Identity/403/Denied";
                 options.SlidingExpiration = true;
-            });
-            
+            });       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

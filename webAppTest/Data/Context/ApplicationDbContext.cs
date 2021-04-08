@@ -13,7 +13,6 @@ namespace webAppTest.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-
         }
         public DbSet<City> City { get; set; }
         public DbSet<Segment> Segment { get; set; }
