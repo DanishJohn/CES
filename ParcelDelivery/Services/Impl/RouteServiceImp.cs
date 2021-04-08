@@ -67,7 +67,8 @@ namespace ParcelDelivery.Services.Impl
                     parts.Add(new SegmentDTO
                     {
                         Departure = new Data.DataContracts.City.CityDTO { Name = edge.Source.ToString() },
-                        Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString()}
+                        Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString()},
+                        Duration = 8
                     });
                     time += WeightByTime(edge);
                 }
