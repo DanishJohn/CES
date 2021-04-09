@@ -10,6 +10,7 @@ using ParcelDelivery.Data;
 using ParcelDelivery.Data.DataContracts.Segment;
 using ParcelDelivery.Data.DataContracts.Route;
 using ParcelDelivery.Data.DataContracts.City;
+using ParcelDelivery.Data.Models.Parcel;
 
 namespace ParcelDelivery.Services.Impl
 {
@@ -43,11 +44,11 @@ namespace ParcelDelivery.Services.Impl
             return routes;
         }
 
-        public List<RouteResult> SearchRoute(City source, City end, double price)
+        public List<RouteResult> SearchRoute(City source, City end, double price, ParcelCategory category )
         {
             var citiesByName = context.City.Where(x => x.IsActive).ToList().ToDictionary(x => x.Name);
             var routes = GetAllRoutes();
-
+            var extraCharge = category.ExtraCharge;
             var graph = BuildGraph(routes);
 
             double WeightByTime(TaggedEdge<string, string> edge)
@@ -79,7 +80,7 @@ namespace ParcelDelivery.Services.Impl
                 }
                 route.Segments = parts;
                 route.TotalDuration = time;
-                route.TotalPrice = returnPrice;
+                route.TotalPrice = returnPrice*(1+ extraCharge/100);
                 route.Departure = new CityDTO { Name = source.Name };
                 route.Destination = new CityDTO { Name = end.Name };
                 route.GetDistinctTransportationCompany();
