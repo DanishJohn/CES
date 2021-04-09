@@ -21,5 +21,10 @@ namespace ParcelDelivery.Services.Impl
 		{
 			return _context.ParcelCategory.ToList();
 		}
-	}
+
+        public ParcelCategory findById(int id)
+        {
+			return _context.ParcelCategory.Find(id);
+        }
+    }
 }

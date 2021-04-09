@@ -9,5 +9,6 @@ namespace ParcelDelivery.Services
 	public interface IParcelCategoryService
 	{
 		public List<ParcelCategory> FindAllCategories();
+		public ParcelCategory findById(int id);
 	}
 }
