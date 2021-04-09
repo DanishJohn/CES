@@ -59,8 +59,8 @@ namespace ParcelDelivery.Controllers
             {
                 routes.Add(new RouteIntegrationDTO
                 {
-                    From = seg.From.Code,
-                    To = seg.To.Code,
+                    From = seg.From.Code.Replace("\r\n",""),
+                    To = seg.To.Code.Replace("\r\n",""),
                     IsTwoWay = true,
                     Price = (Decimal)(price*(1 + parcelCategory.ExtraCharge/100)),
                     Segments = 1,
