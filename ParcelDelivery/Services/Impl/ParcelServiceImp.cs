@@ -52,7 +52,7 @@ namespace ParcelDelivery.Services.Impl
             }
             else if (weight <= 20)
             {
-                weightId = 20;
+                weightId = 3;
             }
             try
             {

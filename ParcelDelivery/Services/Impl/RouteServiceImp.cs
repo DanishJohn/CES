@@ -50,15 +50,23 @@ namespace ParcelDelivery.Services.Impl
             var routes = GetAllRoutes();
             var extraCharge = category.ExtraCharge;
             var graph = BuildGraph(routes);
+            var result = new List<RouteResult>();
 
             double WeightByTime(TaggedEdge<string, string> edge)
             {
                 return 8;
             }
+            IEnumerable<IEnumerable<TaggedEdge<string, string>>> shortestPath = null;
 
-                var shortestPath = graph.RankedShortestPathHoffmanPavley(WeightByTime, source.Name, end.Name, 4);
+            try
+            {
+                shortestPath = graph.RankedShortestPathHoffmanPavley(WeightByTime, source.Name, end.Name, 4);
+            }
+            catch
+            {
 
-            var result = new List<RouteResult>();
+            }
+
 
             foreach (var shortPath in shortestPath)
             {
