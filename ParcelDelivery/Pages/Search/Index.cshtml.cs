@@ -106,6 +106,26 @@ namespace ParcelDelivery.Pages.Search
         {
             cityList = new SelectList(_cityService.FindAllCities(), nameof(City.Id), nameof(City.Name), null, null);
             categoryList = new SelectList(_parcelCategoryService.FindAllCategories(), nameof(ParcelCategory.Id), nameof(ParcelCategory.Name), null, null);
+            var parcelDimensionList = Enum.GetValues(typeof(SizeEnum)).Cast<SizeEnum>()
+               .Select(t => new ParcelInformation
+               {
+                   Id = ((int)t),
+                   Name = t.ToString()
+               });
+
+            heightList = new SelectList(parcelDimensionList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
+            depthList = new SelectList(parcelDimensionList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
+            breadthList = new SelectList(parcelDimensionList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
+
+            var parcelInformationList = Enum.GetValues(typeof(WeightEnum)).Cast<WeightEnum>()
+               .Select(t => new ParcelInformation
+               {
+                   Id = ((int)t),
+                   Name = t.ToString()
+               });
+
+            weightList = new SelectList(parcelInformationList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
+
             var parcCategory = _parcelCategoryService.findById(6);
             var parcSize = parcelService.ParseSize(breadthId, heightId, depthId);
             var parcWeight = parcelService.ParseWeight(weightId);
