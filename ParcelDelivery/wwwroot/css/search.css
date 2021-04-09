@@ -46,6 +46,7 @@
         text-align: center;
         padding: 1.5rem 1rem;
         width: 200px;
+        font-size: 15px;
     }
 
         .sidebar .nav-item .nav-link span {
@@ -58,7 +59,7 @@
     }
 
         .sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:hover, .sidebar .nav-item .nav-link:focus {
-            color: #000000;
+            color: red;
         }
 
 
@@ -86,9 +87,14 @@
     z-index: 1;
 }
 
-    .sidebar .sidebar-brand .sidebar-brand-text {
-        color: #ffffff;
-    }
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+}
+
+.sidebar .sidebar-brand .sidebar-brand-text {
+    color: #ffffff;
+}
 
 .sidebar hr.sidebar-divider {
     margin: 0 1rem 1rem;

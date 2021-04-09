@@ -39,11 +39,24 @@ namespace ParcelDelivery.Services.Impl
                 .ToList();
         }
 
-        public ParcelWeight ParseWeight(WeightEnum weight)
+        public ParcelWeight ParseWeight(int weight)
         {
+            var weightId = 0;
+            if (weight < 1)
+            {
+                weightId = 1;
+            }
+            else if (weight <= 5)
+            {
+                weightId = 2;
+            }
+            else if (weight <= 20)
+            {
+                weightId = 20;
+            }
             try
             {
-                return _context.ParcelWeight.Find(weight);
+                return _context.ParcelWeight.Find(weightId);
             }
             catch
             {
