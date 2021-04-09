@@ -39,7 +39,7 @@ namespace ParcelDelivery.Services.Impl
                 .ToList();
         }
 
-        public ParcelWeight ParseWeight(int weight)
+        public ParcelWeight ParseWeight(float weight)
         {
             var weightId = 0;
             if (weight < 1)
@@ -82,6 +82,12 @@ namespace ParcelDelivery.Services.Impl
         public ParcelCategory GetCategory(int id)
         {
             return _context.ParcelCategory.Find(id);
+        }
+
+        public ParcelCategory GetCategoryByCode(string category)
+        {
+            var output = _context.ParcelCategory.SingleOrDefault(c => c.Code.Equals(category) && c.IsSupported);
+            return output ;
         }
     }
 }

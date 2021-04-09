@@ -13,9 +13,11 @@ namespace ParcelDelivery.Services
 		 List<ParcelWeight> FindAllParcelWeights();
 		List<ParcelSize> FindAllParcelSizes();
 		 List<ParcelPrice> FindAllParcelPrices();
-		ParcelWeight ParseWeight(int weight);
+		ParcelWeight ParseWeight(float weight);
 		ParcelSize ParseSize(float breadth, float height, float depth);
 		ParcelCategory GetCategory(int id);
+
+		ParcelCategory GetCategoryByCode(string category);
 		
 	}
 }

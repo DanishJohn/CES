@@ -16,5 +16,6 @@ namespace ParcelDelivery.Data.Models.Parcel
         public string Name { get; set; }
         public bool IsSupported { get; set; }
         public float ExtraCharge { get; set; }
+        public string Code { get; set; }
     }
 }
