@@ -14,6 +14,7 @@ using ParcelDelivery.Data.DataContracts.Segment;
 using ParcelDelivery.Data.Entity.Routes;
 using ParcelDelivery.Data.Models.Parcel;
 using ParcelDelivery.Services;
+using ParcelDelivery.Shared;
 
 namespace ParcelDelivery.Pages.Search
 {
@@ -78,13 +79,13 @@ namespace ParcelDelivery.Pages.Search
             cityList = new SelectList(_cityService.FindAllCities(), nameof(City.Id), nameof(City.Name), null, null);
             categoryList = new SelectList(_parcelCategoryService.FindAllCategories(), nameof(ParcelCategory.Id), nameof(ParcelCategory.Name), null, null);
 
-
+            string data = EnumHelper.GetStringValue(SizeEnum.Between25And40);
             var parcelDimensionList = Enum.GetValues(typeof(SizeEnum)).Cast<SizeEnum>()
                .Select(t => new ParcelInformation
                {
                    Id = ((int)t),
-                   Name = t.ToString()
-               });
+                   Name = EnumHelper.GetStringValue(t)
+               }); ;
 
             heightList = new SelectList(parcelDimensionList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
             depthList = new SelectList(parcelDimensionList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null); 
@@ -94,7 +95,7 @@ namespace ParcelDelivery.Pages.Search
                .Select(t => new ParcelInformation
                {
                    Id = ((int)t),
-                   Name = t.ToString()
+                   Name = EnumHelper.GetStringValue(t)
                });
 
             weightList = new SelectList(parcelInformationList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
@@ -110,7 +111,7 @@ namespace ParcelDelivery.Pages.Search
                .Select(t => new ParcelInformation
                {
                    Id = ((int)t),
-                   Name = t.ToString()
+                   Name = EnumHelper.GetStringValue(t),
                });
 
             heightList = new SelectList(parcelDimensionList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
@@ -121,7 +122,7 @@ namespace ParcelDelivery.Pages.Search
                .Select(t => new ParcelInformation
                {
                    Id = ((int)t),
-                   Name = t.ToString()
+                   Name = EnumHelper.GetStringValue(t),
                });
 
             weightList = new SelectList(parcelInformationList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
