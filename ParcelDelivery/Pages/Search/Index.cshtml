@@ -240,6 +240,7 @@
                                                             <th>Estimated total time arrival (hours)</th>
                                                             <th>Total price ($)</th>
                                                         </tr>
+                                                        @{var index = 0; }
                                                         @foreach (var result in @Model.searchResult)
                                                         {
                                                             <tr>
@@ -251,27 +252,28 @@
                                                                     {
                                                                         @if (company == TransportationCompany.OA)
                                                                         {
-                                                                            <img src="~/asset/oa.png" /> 
+                                                                            <img src="~/asset/oa.png" />
                                                                         }
                                                                         @if (company == TransportationCompany.TL)
                                                                         {
-                                                                            <img src="~/asset/tl.png" /> 
+                                                                            <img src="~/asset/tl.png" />
                                                                         }
                                                                         @if (company == TransportationCompany.EIT)
                                                                         {
-                                                                            <img src="~/asset/eit.png" /> 
+                                                                            <img src="~/asset/eit.png" />
                                                                         }
                                                                     }
                                                                 </td>
                                                                 <td>@result.TotalDuration</td>
                                                                 <td>@result.TotalPrice</td>
                                                                 <td>
-                                                                    <button class="btn btn-light" data-toggle="modal" data-content=""
-                                                                            data-target="#modal">
+                                                                    <button class="btn btn-light" data-toggle="modal" data-content="" id=""
+                                                                            data-target="#modal-@index">
                                                                         View detail
                                                                     </button>
                                                                 </td>
                                                             </tr>
+                                                            index = index + 1;
                                                         }
                                                     </table>
                                                 }
@@ -292,48 +294,67 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header" style="color: white; background-color:  rgba(8,67,96,1);">
-                    <h5 class="modal-title" id="exampleModalLabel">Route detail</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <tr>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Operated by</th>
-                            <th>Estimated duration</th>
-                            <th>Price</th>
-                            <th>Extra fee</th>
-                            <th>Total price</th>
-                        </tr>
+    @if (@Model.searchResult != null)
+    {
+        var i = 0; 
+        @foreach (var element in @Model.searchResult)
+        {
+            <div class="modal fade" id="modal-@i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="color: white; background-color:  rgba(8,67,96,1);">
+                            <h5 class="modal-title" id="exampleModalLabel">Route detail</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @foreach (var segment in element.Segments)
+                        {
+                            <div class="modal-body">
+                                <table class="table">
+                                    <tr>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Operated by</th>
+                                        <th>Estimated duration</th>
+                                        <th>Price</th>
+                                        <th>Extra fee</th>
+                                        <th>Total price</th>
+                                    </tr>
+                                    <tr>
+                                        <td>@segment.Departure.Name</td>
+                                        <td>@segment.Destination.Name</td>
+
+                                        @if (@segment.TransportationCompany == TransportationCompany.OA)
+                                        {
+                                            <img src="~/asset/oa.png" />
+                                        }
+                                        @if (@segment.TransportationCompany == TransportationCompany.TL)
+                                        {
+                                            <img src="~/asset/tl.png" />
+                                        }
+                                        @if (@segment.TransportationCompany == TransportationCompany.EIT)
+                                        {
+                                            <img src="~/asset/eit.png" />
+                                        }
+                                        <td>@segment.EstimatedDuration</td>
+                                        <td>@segment.Price</td>
+                                        <td>@segment.ExtraFee</td>
+                                        <td>@segment.TotalPrice>
+                                    </tr>
 
 
-                        <tr>
-                            <td>
-                                Marrakesh
-                            </td>
-                            <td>Timbuktu</td>
-                            <td> <img width="50px" height="50px" src="~/asset/logo.png" /></td>
-                            <td>8 hours</td>
-                            <td>5$</td>
-                            <td>5$</td>
-                            <td>5$</td>
-                        </tr>
+                                </table>
+                            </div>
 
-
-                    </table>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+            i += 1;
+        }
+    }
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
