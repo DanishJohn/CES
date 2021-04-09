@@ -21,13 +21,20 @@ namespace ParcelDelivery.Pages.Search
         private readonly ICityService _cityService;
         private readonly IParcelCategoryService _parcelCategoryService;
         private readonly IRouteService _routeService;
+        private readonly IParcelService parcelService;
+        private readonly IPriceService priceService;
 
-        public SearchPageModel(ICityService cityService, IParcelCategoryService parcelCategoryService, IRouteService routeService)
+        public SearchPageModel(ICityService cityService, 
+            IParcelCategoryService parcelCategoryService, 
+            IRouteService routeService,
+            IParcelService parcelService,
+            IPriceService priceService)
         {
             _cityService = cityService;
             _parcelCategoryService = parcelCategoryService;
             _routeService = routeService;
-
+            this.parcelService = parcelService;
+            this.priceService = priceService;
         }
 
         public SelectList cityList { get; set; }
@@ -98,7 +105,10 @@ namespace ParcelDelivery.Pages.Search
             cityList = new SelectList(_cityService.FindAllCities(), nameof(City.Id), nameof(City.Name), null, null);
             categoryList = new SelectList(_parcelCategoryService.FindAllCategories(), nameof(ParcelCategory.Id), nameof(ParcelCategory.Name), null, null);
             var parcCategory = _parcelCategoryService.findById(6);
-            searchResult = _routeService.SearchRoute(_cityService.GetCity(departureCityId), _cityService.GetCity(destinationCityId), 0, parcCategory);
+            var parcSize = parcelService.ParseSize(breadthId, heightId, depthId);
+            var parcWeight = parcelService.ParseWeight(weightId);
+            var finalPrice = priceService.GetPrice(parcSize.Id, parcWeight.Id);
+            searchResult = _routeService.SearchRoute(_cityService.GetCity(departureCityId), _cityService.GetCity(destinationCityId), finalPrice, parcCategory);
 
             return Page();
         }
