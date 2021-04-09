@@ -25,7 +25,10 @@ namespace ParcelDelivery.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Segment>>> GetSegment()
         {
-            return await _context.Segment.ToListAsync();
+            return await _context.Segment
+                .Include(s => s.From)
+                .Include(s => s.To)
+                .ToListAsync();
         }
 
         // GET: api/Segments/5

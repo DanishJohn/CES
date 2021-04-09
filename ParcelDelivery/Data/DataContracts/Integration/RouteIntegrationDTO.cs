@@ -13,5 +13,6 @@ namespace ParcelDelivery.Data.DataContracts.Integration
         public decimal Price { get; set; }
         public float Time { get; set; }
         public int Segments { get; set; }
+        public string Category { get; set; }
     }
 }

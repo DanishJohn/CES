@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ParcelDelivery.Data;
 using ParcelDelivery.Data.Entity.Routes;
 
@@ -18,7 +19,8 @@ namespace ParcelDelivery.Services.Impl
         }
         public List<Segment> FindAllSegments()
         {
-            return _context.Segment.ToList();
+            return _context.Segment.Include(s => s.From).Include(s => s.To)
+                .ToList();
         }
     }
 }
