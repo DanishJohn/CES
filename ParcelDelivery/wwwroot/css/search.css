@@ -221,3 +221,7 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
+
+.seperator {
+    border-bottom: 1px solid black;
+}
