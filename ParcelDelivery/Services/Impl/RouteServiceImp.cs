@@ -79,9 +79,12 @@ namespace ParcelDelivery.Services.Impl
                     parts.Add(new SegmentResult
                     {
                         Departure = new Data.DataContracts.City.CityDTO { Name = edge.Source.ToString() },
-                        Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString()},
+                        Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString() },
                         EstimatedDuration = 8,
-                        TransportationCompany = TransportationCompany.OA
+                        TransportationCompany = TransportationCompany.OA,
+                        Price = 8,
+                        TotalPrice = (Decimal)(8 * (1 + extraCharge / 100)),
+                        ExtraFee = (Decimal)extraCharge
                     });
                     time += WeightByTime(edge);
                     returnPrice += price;
