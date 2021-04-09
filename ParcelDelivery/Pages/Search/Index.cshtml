@@ -111,7 +111,7 @@
                                                                     <br />
                                                                     <br />
                                                                     <label for="inputDeparture">
-                                                                        Weight <span style="color: red;">*</span>
+                                                                        Weight (kg) <span style="color: red;">*</span>
                                                                     </label>
                                                                     <select class="form-control" asp-for="weightId" asp-items="@Model.weightList"></select>
                                                                 </div>
@@ -124,17 +124,17 @@
                                                                 <div class="card-body">
 
                                                                     <label for="inputDeparture">
-                                                                        Height <span style="color: red;">*</span>
+                                                                        Height (cm) <span style="color: red;">*</span>
                                                                     </label>
                                                                     <select class="form-control" asp-for="heightId" asp-items="@Model.heightList"></select>
                                                                     <br />
                                                                     <label for="inputDeparture">
-                                                                        Depth <span style="color: red;">*</span>
+                                                                        Depth (cm) <span style="color: red;">*</span>
                                                                     </label>
                                                                     <select class="form-control" asp-for="depthId" asp-items="@Model.depthList"></select>
                                                                     <br />
                                                                     <label for="inputDeparture">
-                                                                        Breadth <span style="color: red;">*</span>
+                                                                        Breadth (cm) <span style="color: red;">*</span>
                                                                     </label>
                                                                     <select class="form-control" asp-for="breadthId" asp-items="@Model.breadthList"></select>
                                                                 </div>
@@ -184,36 +184,36 @@
                                                             @{var index = 0; }
                                                             @foreach (var result in @Model.searchResult)
                                                             {
-                                                                <tr>
-                                                                    <td>
-                                                                        <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
-                                                                        <br />
+                                                        <tr>
+                                                            <td>
+                                                                <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
+                                                                <br />
 
-                                                                        @foreach (var company in @result.TransportationCompanies)
-                                                                        {
-                                                                            @if (company == TransportationCompany.OA)
-                                                                            {
-                                                                                <img src="~/asset/oa.png" />
-                                                                            }
-                                                                            @if (company == TransportationCompany.TL)
-                                                                            {
-                                                                                <img src="~/asset/tl.png" />
-                                                                            }
-                                                                            @if (company == TransportationCompany.EIT)
-                                                                            {
-                                                                                <img src="~/asset/eit.png" />
-                                                                            }
-                                                                        }
-                                                                    </td>
-                                                                    <td>@result.TotalDuration</td>
-                                                                    <td>@result.TotalPrice</td>
-                                                                    <td>
-                                                                        <button class="btn btn-light" data-toggle="modal" data-content="" id=""
-                                                                                data-target="#modal-@index">
-                                                                            View detail
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
+                                                                @foreach (var company in @result.TransportationCompanies)
+                                                                {
+                                                                    @if (company == TransportationCompany.OA)
+                                                                    {
+                                                                        <img src="~/asset/oa.png" />
+                                                                    }
+                                                                    @if (company == TransportationCompany.TL)
+                                                                    {
+                                                                        <img src="~/asset/tl.png" />
+                                                                    }
+                                                                    @if (company == TransportationCompany.EIT)
+                                                                    {
+                                                                        <img src="~/asset/eit.png" />
+                                                                    }
+                                                                }
+                                                            </td>
+                                                            <td>@result.TotalDuration</td>
+                                                            <td>@result.TotalPrice.ToString("#.##")</td>
+                                                            <td>
+                                                                <button class="btn btn-light" data-toggle="modal" data-content="" id=""
+                                                                        data-target="#modal-@index">
+                                                                    View detail
+                                                                </button>
+                                                            </td>
+                                                        </tr>
                                                                 index = index + 1;
                                                             }
                                                         </table>
@@ -258,10 +258,10 @@
                                     <tr>
                                         <th>From</th>
                                         <th>To</th>
-                                        <th>Estimated duration</th>
-                                        <th>Price</th>
-                                        <th>Extra fee</th>
-                                        <th>Total price</th>
+                                        <th>Estimated duration (hours)</th>
+                                        <th>Price ($)</th>
+                                        <th>Extra fee ($)</th>
+                                        <th>Total price ($)</th>
                                     </tr>
                                     <tr>
                                         <td>@segment.Departure.Name</td>
@@ -280,9 +280,9 @@
                                             <img src="~/asset/eit.png" />
                                         }
                                         <td>@segment.EstimatedDuration</td>
-                                        <td>@segment.Price</td>
-                                        <td>@segment.ExtraFee</td>
-                                        <td>@segment.TotalPrice
+                                        <td>@segment.Price.ToString("#.##")</td>
+                                        <td>@segment.ExtraFee.ToString("#.##")</td>
+                                        <td>@segment.TotalPrice.ToString("#.##")</td>
                                     </tr>
 
 
