@@ -14,7 +14,7 @@ namespace ParcelDelivery.Services
 		List<ParcelSize> FindAllParcelSizes();
 		 List<ParcelPrice> FindAllParcelPrices();
 		ParcelWeight ParseWeight(WeightEnum weight);
-		ParcelSize ParseSize(SizeEnum breadth, SizeEnum height, SizeEnum depth);
+		ParcelSize ParseSize(float breadth, float height, float depth);
 		
 	}
 }
