@@ -175,48 +175,48 @@
                                                     }
 
 
-                                                    <table>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Estimated total time arrival (hours)</th>
-                                                            <th>Total price ($)</th>
-                                                        </tr>
-                                                        @{var index = 0; }
-                                                        @foreach (var result in @Model.searchResult)
-                                                        {
-                                                            <tr>
-                                                                <td>
-                                                                    <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
-                                                                    <br />
+                                            <table style="color: white; width:100%; font-style: italic; font-size: 18px; padding: 50px; border-collapse:separate; border-spacing:0 20px;">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Estimated total time arrival (hours)</th>
+                                                    <th>Total price ($)</th>
+                                                </tr>
+                                                @{var index = 0; }
+                                                @foreach (var result in @Model.searchResult)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
+                                                            <br />
 
-                                                                    @foreach (var company in @result.TransportationCompanies)
-                                                                    {
-                                                                        @if (company == TransportationCompany.OA)
-                                                                        {
-                                                                            <img src="~/asset/oa.png" />
-                                                                        }
-                                                                        @if (company == TransportationCompany.TL)
-                                                                        {
-                                                                            <img src="~/asset/tl.png" />
-                                                                        }
-                                                                        @if (company == TransportationCompany.EIT)
-                                                                        {
-                                                                            <img src="~/asset/eit.png" />
-                                                                        }
-                                                                    }
-                                                                </td>
-                                                                <td>@result.TotalDuration</td>
-                                                                <td>@result.TotalPrice</td>
-                                                                <td>
-                                                                    <button class="btn btn-light" data-toggle="modal" data-content="" id=""
-                                                                            data-target="#modal-@index">
-                                                                        View detail
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                            index = index + 1;
-                                                        }
-                                                    </table>
+                                                            @foreach (var company in @result.TransportationCompanies)
+                                                            {
+                                                                @if (company == TransportationCompany.OA)
+                                                                {
+                                                                    <img src="~/asset/oa.png" />
+                                                                }
+                                                                @if (company == TransportationCompany.TL)
+                                                                {
+                                                                    <img src="~/asset/tl.png" />
+                                                                }
+                                                                @if (company == TransportationCompany.EIT)
+                                                                {
+                                                                    <img src="~/asset/eit.png" />
+                                                                }
+                                                            }
+                                                        </td>
+                                                        <td>@result.TotalDuration</td>
+                                                        <td>@result.TotalPrice</td>
+                                                        <td>
+                                                            <button class="btn btn-light" data-toggle="modal" data-content="" id=""
+                                                                    data-target="#modal-@index">
+                                                                View detail
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    index = index + 1;
+                                                }
+                                            </table>
                                                 }
                                             </div>
                                         </div>
@@ -237,7 +237,7 @@
 
     @if (@Model.searchResult != null)
     {
-        var i = 0;
+        var i = 0; 
         @foreach (var element in @Model.searchResult)
         {
             <div class="modal fade" id="modal-@i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -281,7 +281,7 @@
                                         <td>@segment.EstimatedDuration</td>
                                         <td>@segment.Price</td>
                                         <td>@segment.ExtraFee</td>
-                                        <td>@segment.TotalPrice</td>
+                                        <td>@segment.TotalPrice
                                     </tr>
 
 
