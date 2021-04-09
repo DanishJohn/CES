@@ -84,9 +84,9 @@ namespace ParcelDelivery.Services.Impl
             return _context.ParcelCategory.Find(id);
         }
 
-        public ParcelCategory GetCategoryByName(string category)
+        public ParcelCategory GetCategoryByCode(string category)
         {
-            var output = _context.ParcelCategory.SingleOrDefault(c => c.Name.Equals(category) && c.IsSupported);
+            var output = _context.ParcelCategory.SingleOrDefault(c => c.Code.Equals(category) && c.IsSupported);
             return output ;
         }
     }

@@ -17,7 +17,7 @@ namespace ParcelDelivery.Services
 		ParcelSize ParseSize(float breadth, float height, float depth);
 		ParcelCategory GetCategory(int id);
 
-		ParcelCategory GetCategoryByName(string category);
+		ParcelCategory GetCategoryByCode(string category);
 		
 	}
 }

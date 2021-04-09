@@ -19,6 +19,7 @@ namespace ParcelDelivery.Controllers
         private ISegmentService segmentService;
         private IPriceService priceService;
         private IParcelService parcelService;
+        private const string otherCategory = "other";
 
         public IntegrationController(ApplicationDbContext context, 
             ISegmentService segmentService,
@@ -43,7 +44,12 @@ namespace ParcelDelivery.Controllers
 
             var price = priceService.GetPrice(parcelWeight.Id, parcelSize.Id);
 
-            var parcelCategory = parcelService.GetCategoryByName(integrationInput.Category);
+            if(string.IsNullOrEmpty(integrationInput.Category))
+            {
+                integrationInput.Category = otherCategory;
+            }
+
+            var parcelCategory = parcelService.GetCategoryByCode(integrationInput.Category);
             if (parcelCategory == null)
             {
                 return NotFound("Category is not supported");
@@ -59,7 +65,6 @@ namespace ParcelDelivery.Controllers
                     Price = (Decimal)(price*(1 + parcelCategory.ExtraCharge/100)),
                     Segments = 1,
                     Time = 8,
-                    Category = parcelCategory.Name
                 });
             }
             var dataOutput = new IntegrationDTO
