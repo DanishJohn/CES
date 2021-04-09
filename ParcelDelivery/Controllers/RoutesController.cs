@@ -45,7 +45,7 @@ namespace ParcelDelivery.Controllers
             City city1 = _cityService.GetCity(fromId);
             City city2 = _cityService.GetCity(toId);
             ParcelCategory category = parcelCategoryService.findById(categoryId);
-            var price = priceService.GetPrice(fromId, sizeId);
+            var price = priceService.GetPrice(weightId, sizeId);
             return _routeService.SearchRoute(city1, city2, price, category);
         }
     }
