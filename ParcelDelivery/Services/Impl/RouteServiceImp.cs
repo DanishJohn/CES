@@ -82,7 +82,7 @@ namespace ParcelDelivery.Services.Impl
                         Destination = new Data.DataContracts.City.CityDTO { Name = edge.Target.ToString() },
                         EstimatedDuration = 8,
                         TransportationCompany = TransportationCompany.OA,
-                        Price = 8,
+                        Price = (Decimal)price,
                         TotalPrice = (Decimal)(8 * (1 + extraCharge / 100)),
                         ExtraFee = (Decimal)extraCharge
                     });
