@@ -14,6 +14,5 @@ namespace ParcelDelivery.Services
     {
         BidirectionalGraph<string, TaggedEdge<string, string>> BuildGraph(List<Segment> route);
         List<RouteResult> SearchRoute(City source, City end, double price);
-
     }
 }

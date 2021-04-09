@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using ParcelDelivery.Data;
+using ParcelDelivery.Data.DataContracts.Enums;
 using ParcelDelivery.Data.DataContracts.Parcel;
 using ParcelDelivery.Data.Models.Parcel;
 
@@ -36,6 +37,33 @@ namespace ParcelDelivery.Services.Impl
                 .Include(x => x.Size)
                 .Include(x => x.Weight)
                 .ToList();
+        }
+
+        public ParcelWeight ParseWeight(WeightEnum weight)
+        {
+            try
+            {
+                return _context.ParcelWeight.Find(weight);
+            }
+            catch
+            {
+                throw new Exception("Weight type not found");
+            }
+        }
+
+        public ParcelSize ParseSize(float breadth, float height, float depth)
+        {
+            var sizeList = this.FindAllParcelSizes();
+            ParcelSize returnSize = null;
+            foreach (var parc in sizeList)
+            {
+                if (breadth <= parc.Breadth && height <= parc.Height && depth <= parc.Depth)
+                {
+                    returnSize = parc;
+                    break;
+                }
+            }
+            return returnSize;
         }
     }
 }
