@@ -83,8 +83,8 @@ namespace ParcelDelivery.Services.Impl
                         EstimatedDuration = 8,
                         TransportationCompany = TransportationCompany.OA,
                         Price = (Decimal)price,
-                        TotalPrice = (Decimal)(8 * (1 + extraCharge / 100)),
-                        ExtraFee = (Decimal)extraCharge
+                        TotalPrice = (Decimal)(price * (1 + extraCharge / 100)),
+                        ExtraFee = (Decimal)(price *  extraCharge / 100),
                     });
                     time += WeightByTime(edge);
                     returnPrice += price;

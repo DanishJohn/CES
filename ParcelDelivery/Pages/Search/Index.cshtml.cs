@@ -126,10 +126,10 @@ namespace ParcelDelivery.Pages.Search
 
             weightList = new SelectList(parcelInformationList, nameof(ParcelInformation.Id), nameof(ParcelInformation.Name), null, null);
 
-            var parcCategory = _parcelCategoryService.findById(6);
             var parcSize = parcelService.ParseSize(breadthId, heightId, depthId);
             var parcWeight = parcelService.ParseWeight(weightId);
             var finalPrice = priceService.GetPrice(parcSize.Id, parcWeight.Id);
+            var parcCategory = _parcelCategoryService.findById(categoryId);
             searchResult = _routeService.SearchRoute(_cityService.GetCity(departureCityId), _cityService.GetCity(destinationCityId), finalPrice, parcCategory);
 
             return Page();

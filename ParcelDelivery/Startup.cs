@@ -40,9 +40,12 @@ namespace ParcelDelivery
                 .AddDefaultTokenProviders();
             services.AddControllers();
             services.AddRazorPages();
-            services.AddMvc().AddNewtonsoftJson();
-            services.AddScoped<ICityService, CityServiceImp>();
-            services.AddScoped<IParcelService, ParcelServiceImp>();
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AddPageRoute("/Search/Index", "");
+                })
+                .AddNewtonsoftJson();
 
             ServiceConfigure.RegisterService(services);
 
@@ -73,7 +76,7 @@ namespace ParcelDelivery
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-                options.LoginPath = "/Identity/Account/Login";
+                options.LoginPath = "/Login/Index";
                 options.AccessDeniedPath = "/Identity/403/Denied";
                 options.SlidingExpiration = true;
             });       
