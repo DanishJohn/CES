@@ -15,6 +15,7 @@ namespace ParcelDelivery.Services
 		 List<ParcelPrice> FindAllParcelPrices();
 		ParcelWeight ParseWeight(int weight);
 		ParcelSize ParseSize(float breadth, float height, float depth);
+		ParcelCategory GetCategory(int id);
 		
 	}
 }

@@ -43,7 +43,7 @@ namespace ParcelDelivery
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
                 {
-                    options.Conventions.AddPageRoute("/Login/index", "");
+                    options.Conventions.AddPageRoute("/Search/Index", "");
                 })
                 .AddNewtonsoftJson();
 

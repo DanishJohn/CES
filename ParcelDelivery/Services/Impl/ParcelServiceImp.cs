@@ -78,5 +78,10 @@ namespace ParcelDelivery.Services.Impl
             }
             return returnSize;
         }
+
+        public ParcelCategory GetCategory(int id)
+        {
+            return _context.ParcelCategory.Find(id);
+        }
     }
 }
