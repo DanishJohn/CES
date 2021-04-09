@@ -209,3 +209,7 @@ a.home-btn {
     }
 }
 
+#parcelInformation > table > tbody > tr td {
+    border-bottom: 1pt solid white;
+    padding-bottom: 10px;
+}

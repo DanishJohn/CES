@@ -64,7 +64,7 @@ namespace ParcelDelivery.Services.Impl
             }
             catch
             {
-
+                return result;
             }
 
 

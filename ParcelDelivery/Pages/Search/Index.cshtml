@@ -93,7 +93,7 @@
                                                     <div class="row" style="text-align: left;">
                                                         <div class="col">
                                                             <div class="card"
-                                                                 style="background-color: transparent; border: 1px solid; height: 35vh;">
+                                                                 style="background-color: transparent; border: 1px solid; height: 37vh;">
                                                                 <div class="card-header">Parcel information</div>
                                                                 <div class="card-body">
 
@@ -119,7 +119,7 @@
                                                         </div>
                                                         <div class="col">
                                                             <div class="card"
-                                                                 style="background-color: transparent; border: 1px solid; height: 35vh;">
+                                                                 style="background-color: transparent; border: 1px solid; height: 37vh;">
                                                                 <div class="card-header">Parcel dimensions</div>
                                                                 <div class="card-body">
 
@@ -156,67 +156,68 @@
                                                 @if (@Model.searchResult != null)
                                                 {
                                                     <hr style="background-color: white; margin-left: 100px;  margin-right: 100px" />
-                                                    <h5 style="color: white; font-size: 25px;">Search result</h5>
-
 
                                                     var totalResults = @Model.searchResult.Count;
 
-                                                    if (totalResults == 1)
+                                                    if (totalResults == 0)
                                                     {
-                                                        <p style="color: white; text-align: left; font-style: italic; font-size: 15px; font-weight: lighter; padding-left: 100px;">
-                                                            Found 1 item
-                                                        </p>
+                                                        <h4 style="color: white; font-size: 25px;">
+                                                            No result found.
+                                                        </h4>
                                                     }
-                                                    if (totalResults > 1)
+                                                    if (totalResults > 0)
                                                     {
+                                                        <h5 style="color: white; font-size: 25px;">Search result</h5>
+
                                                         <p style="color: white; text-align: left; font-style: italic; font-size: 15px; font-weight: lighter; padding-left: 100px;">
-                                                            Found @totalResults item
+                                                            Found @totalResults item(s)
                                                         </p>
-                                                    }
 
 
-                                            <table style="color: white; width:100%; font-style: italic; font-size: 18px; padding: 50px; border-collapse:separate; border-spacing:0 20px;">
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Estimated total time arrival (hours)</th>
-                                                    <th>Total price ($)</th>
-                                                </tr>
-                                                @{var index = 0; }
-                                                @foreach (var result in @Model.searchResult)
-                                                {
-                                                    <tr>
-                                                        <td>
-                                                            <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
-                                                            <br />
 
-                                                            @foreach (var company in @result.TransportationCompanies)
+                                                        <table style="color: white; width:100%; font-style: italic; font-size: 18px; padding: 50px; border-collapse:separate; border-spacing:0 20px;">
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>Estimated total time arrival (hours)</th>
+                                                                <th>Total price ($)</th>
+                                                            </tr>
+                                                            @{var index = 0; }
+                                                            @foreach (var result in @Model.searchResult)
                                                             {
-                                                                @if (company == TransportationCompany.OA)
-                                                                {
-                                                                    <img src="~/asset/oa.png" />
-                                                                }
-                                                                @if (company == TransportationCompany.TL)
-                                                                {
-                                                                    <img src="~/asset/tl.png" />
-                                                                }
-                                                                @if (company == TransportationCompany.EIT)
-                                                                {
-                                                                    <img src="~/asset/eit.png" />
-                                                                }
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="font-size: 30px;">@result.Departure.Name <i class="fa fa-arrow-right"></i> @result.Destination.Name</p>
+                                                                        <br />
+
+                                                                        @foreach (var company in @result.TransportationCompanies)
+                                                                        {
+                                                                            @if (company == TransportationCompany.OA)
+                                                                            {
+                                                                                <img src="~/asset/oa.png" />
+                                                                            }
+                                                                            @if (company == TransportationCompany.TL)
+                                                                            {
+                                                                                <img src="~/asset/tl.png" />
+                                                                            }
+                                                                            @if (company == TransportationCompany.EIT)
+                                                                            {
+                                                                                <img src="~/asset/eit.png" />
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                    <td>@result.TotalDuration</td>
+                                                                    <td>@result.TotalPrice</td>
+                                                                    <td>
+                                                                        <button class="btn btn-light" data-toggle="modal" data-content="" id=""
+                                                                                data-target="#modal-@index">
+                                                                            View detail
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                index = index + 1;
                                                             }
-                                                        </td>
-                                                        <td>@result.TotalDuration</td>
-                                                        <td>@result.TotalPrice</td>
-                                                        <td>
-                                                            <button class="btn btn-light" data-toggle="modal" data-content="" id=""
-                                                                    data-target="#modal-@index">
-                                                                View detail
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    index = index + 1;
-                                                }
-                                            </table>
+                                                        </table>
+                                                    }
                                                 }
                                             </div>
                                         </div>
@@ -237,7 +238,7 @@
 
     @if (@Model.searchResult != null)
     {
-        var i = 0; 
+        var i = 0;
         @foreach (var element in @Model.searchResult)
         {
             <div class="modal fade" id="modal-@i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
