@@ -8,6 +8,6 @@ namespace ParcelDelivery.Services
 {
     public interface IPriceService
     {
-        double GetPrice(ParcelWeight weight, ParcelSize size);
+        double GetPrice(int weightId, int sizeId);
     }
 }

@@ -18,8 +18,10 @@ namespace ParcelDelivery.Services.Impl
             this.context = context;
             this.parcelService = parcelService;
         }
-        public double GetPrice(ParcelWeight weight, ParcelSize size)
+        public double GetPrice(int weightId, int sizeId)
         {
+            var weight = context.ParcelWeight.SingleOrDefault(x => x.Id == weightId);
+            var size = context.ParcelSize.SingleOrDefault(x => x.Id == sizeId);
             var sizeList = parcelService.FindAllParcelSizes();
             var priceList = parcelService.FindAllParcelPrices();
             ParcelSize returnSize = null;

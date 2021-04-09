@@ -36,13 +36,11 @@ namespace ParcelDelivery.Controllers
         // GET: api/Routes/Calculate?fromId=xxx&toId=yyy
         [Route("Calculate")]
         [HttpGet]
-        public List<RouteResult> GetResult(int fromId, int toId,int weightId, int sizeId)
+        public List<RouteResult> GetResult(int fromId, int toId, int weightId, int sizeId)
         {
             City city1 = _cityService.GetCity(fromId);
             City city2 = _cityService.GetCity(toId);
-            var price = priceService.GetPrice(
-                context.ParcelWeight.Find(weightId),
-                context.ParcelSize.Find(sizeId));
+            var price = priceService.GetPrice(fromId, sizeId);
             return _routeService.SearchRoute(city1, city2, price);
         }
     }
