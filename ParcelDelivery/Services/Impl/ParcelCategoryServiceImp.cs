@@ -19,7 +19,7 @@ namespace ParcelDelivery.Services.Impl
 
 		public List<ParcelCategory> FindAllCategories()
 		{
-			return _context.ParcelCategory.ToList();
+			return _context.ParcelCategory.Where(x => x.IsSupported).ToList();
 		}
 
         public ParcelCategory findById(int id)
