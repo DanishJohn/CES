@@ -20,13 +20,20 @@ namespace ParcelDelivery.Pages.Search
         private readonly ICityService _cityService;
         private readonly IParcelCategoryService _parcelCategoryService;
         private readonly IRouteService _routeService;
+        private readonly IPriceService _priceService;
+        private readonly IParcelService _parcelService;
 
-        public SearchPageModel(ICityService cityService, IParcelCategoryService parcelCategoryService, IRouteService routeService)
+        public SearchPageModel(ICityService cityService, 
+            IParcelCategoryService parcelCategoryService, 
+            IRouteService routeService,
+            IPriceService priceService,
+            IParcelService parcelService)
         {
             _cityService = cityService;
             _parcelCategoryService = parcelCategoryService;
             _routeService = routeService;
-
+            _priceService = priceService;
+            _parcelService = parcelService;
         }
 
         public SelectList cityList { get; set; }
@@ -56,7 +63,8 @@ namespace ParcelDelivery.Pages.Search
             cityList = new SelectList(_cityService.FindAllCities(), nameof(City.Id), nameof(City.Name), null, null);
             categoryList = new SelectList(_parcelCategoryService.FindAllCategories(), nameof(ParcelCategory.Id), nameof(ParcelCategory.Name), null, null);
 
-            searchResult = _routeService.SearchRoute(_cityService.GetCity(departureCityId), _cityService.GetCity(destinationCityId));
+            double price = 0.0;
+            searchResult = _routeService.SearchRoute(_cityService.GetCity(departureCityId), _cityService.GetCity(destinationCityId), 0);
 
             return Page();
         }
