@@ -7,8 +7,8 @@ namespace ParcelDelivery.Data.DataContracts.Enums
 {
     public enum SizeEnum
     {
-        LessThan25 = 1,
-        Between25And40 = 2,
-        MoreThan40 = 3,
+        LessThan25 = 20,
+        Between25And40 = 40,
+        MoreThan40 = 80,
     }
 }

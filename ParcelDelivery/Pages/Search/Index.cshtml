@@ -113,15 +113,7 @@
                                                                     <label for="inputDeparture">
                                                                         Weight <span style="color: red;">*</span>
                                                                     </label>
-                                                                    <select id="inputDeparture" class="form-control"
-                                                                            style="background-color: transparent; color: white;">
-                                                                        <option selected disabled selected hidden>
-                                                                            Please
-                                                                            select your parcel weight
-                                                                        </option>
-                                                                        <!-- Please use the C# to populate the list -->
-                                                                        <option>...</option>
-                                                                    </select>
+                                                                    <select class="form-control" asp-for="weightId" asp-items="@Model.weightList"></select>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -134,68 +126,17 @@
                                                                     <label for="inputDeparture">
                                                                         Height <span style="color: red;">*</span>
                                                                     </label>
-                                                                    <select id="inputDeparture" class="form-control"
-                                                                            style="background-color: transparent; color: white;"
-                                                                            required>
-                                                                        <option selected disabled selected hidden
-                                                                                style="color: black;">
-                                                                            Please select your
-                                                                            parcel height
-                                                                        </option>
-                                                                        <!-- Please use the C# to populate the list -->
-                                                                        <!-- Please use the C# to populate the list -->
-                                                                        <option style="color: black;">
-                                                                            Less than 25
-                                                                        </option>
-                                                                        <option style="color: black;">
-                                                                            Less than 50
-                                                                        </option>
-                                                                        <option style="color: black;">
-                                                                            Less than 60
-                                                                        </option>
-                                                                    </select>
+                                                                    <select class="form-control" asp-for="heightId" asp-items="@Model.heightList"></select>
                                                                     <br />
                                                                     <label for="inputDeparture">
                                                                         Depth <span style="color: red;">*</span>
                                                                     </label>
-                                                                    <select id="inputDeparture" class="form-control"
-                                                                            style="background-color: transparent; color: white;">
-                                                                        <option selected disabled selected hidden>
-                                                                            Please
-                                                                            select your parcel depth
-                                                                        </option>
-                                                                        <!-- Please use the C# to populate the list -->
-                                                                        <option style="color: black;">
-                                                                            Less than 25
-                                                                        </option>
-                                                                        <option style="color: black;">
-                                                                            Less than 50
-                                                                        </option>
-                                                                        <option style="color: black;">
-                                                                            Less than 60
-                                                                        </option>
-                                                                    </select>
+                                                                    <select class="form-control" asp-for="depthId" asp-items="@Model.depthList"></select>
                                                                     <br />
                                                                     <label for="inputDeparture">
                                                                         Breadth <span style="color: red;">*</span>
                                                                     </label>
-                                                                    <select id="inputDeparture" class="form-control"
-                                                                            style="background-color: transparent; color: white;">
-                                                                        <option selected disabled selected hidden>
-                                                                            Please
-                                                                            select your parcel breadth
-                                                                        </option>
-                                                                        <!-- Please use the C# to populate the list -->
-                                                                        <option style="color: black;">
-                                                                            Less than 25
-                                                                        </option>
-                                                                        <option style="color: black;">
-                                                                            Less than 50
-                                                                        </option>
-                                                                        <option style="color: black;">
-                                                                            Less than 60
-                                                                        </option>
-                                                                    </select>
+                                                                    <select class="form-control" asp-for="breadthId" asp-items="@Model.breadthList"></select>
                                                                 </div>
                                                             </div>
                                                         </div>

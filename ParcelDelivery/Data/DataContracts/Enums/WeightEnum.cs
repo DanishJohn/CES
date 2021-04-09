@@ -7,8 +7,8 @@ namespace ParcelDelivery.Data.DataContracts.Enums
 {
     public enum WeightEnum
     {
-        LessThan1 = 1,
-        Between1And5 = 2,
-        MoreThan5 = 3,
+        LessThan1 = 0,
+        Between1And5 = 3,
+        MoreThan5 = 8,
     }
 }
